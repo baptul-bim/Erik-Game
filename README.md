@@ -12,7 +12,7 @@ Små saker för att göra livet enklare för oss alla, var snäll och följ dem!
 
 - Pull requests ska vara deskriptiva av vad som tillagts, men vanliga kommits behöver inte nödvändigtvis vara det.
 
-## Uppförandeskod
+## Organisationsguidelines
 
 Lösare regler, samt semantik.
 
