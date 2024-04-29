@@ -4,7 +4,7 @@ Små saker för att göra livet enklare för oss alla, var snäll och följ dem!
 
 ## Publicera features
 
-- **Alla grupper ska jobba i minst 1 branch**, ingenting ska pushas direkt till "main".
+- **Alla grupper ska jobba i minst 1 egen branch**, ingenting ska pushas direkt till "main".
 
 - När en feature är *klar*, kan man skicka in en "pull request" till main. Vänligen se till att det inte orsakar merge conflicts.
 
