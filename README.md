@@ -10,7 +10,7 @@ Små saker för att göra livet enklare för oss alla, var snäll och följ dem!
 
 - Om en pull request orsakar en merge conflict är det upp till gruppen som föreslagit den att lösa konflikterna. 
 
-- Pull requests ska vara deskriptiva av vad som tillagts, men vanliga kommits behöver inte nödvändigtvis vara det.
+- Pull requests ska vara deskriptiva av vad som tillagts, men vanliga commits behöver inte nödvändigtvis vara det.
 
 ## Organisationsguidelines
 
