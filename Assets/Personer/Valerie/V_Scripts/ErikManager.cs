@@ -11,6 +11,12 @@ public class ErikManager : MonoBehaviour
 
     private string[] avalibleStates = { "Chase", "Lurk", "Patrol", "Idle" };
 
+    [SerializeField] private bool PlayerInSight;
+    private float timeSinceSeenPlayer;
+
+    [SerializeField] private float MaxChaseTime;
+
+
     //private List<Action> AvalibleStates;
     
 
@@ -27,11 +33,26 @@ public class ErikManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeSinceSeenPlayer += Time.deltaTime;
+
+        if (PlayerInSight)
+        {
+            timeSinceSeenPlayer = 0.0f;
+        }
+
+        if (ErikCurrentState == "Chase" && timeSinceSeenPlayer > MaxChaseTime) //De-aggros Erik after having chased the player for a certian time without seeing them.
+        {
+            SetErikState("Patrol");
+        }
+
+
         if (int.TryParse(Input.inputString, out int numberPressed)) //Debug tool: Changes Erik's speed to the corresponding numeric key pressed.
         {
             SetErikSpeed(numberPressed);
         }
     }
+
+    
 
     /// <summary>
     /// Changes the current state of the Erik AI.

@@ -757,6 +757,9 @@ MonoBehaviour:
   ErikObj: {fileID: 847578231}
   ErikDestinationSetter: {fileID: 0}
   ErikAIPath: {fileID: 0}
+  ErikCurrentState: 
+  PlayerInSight: 0
+  MaxChaseTime: 4
 --- !u!1 &1548720886
 GameObject:
   m_ObjectHideFlags: 0
