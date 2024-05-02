@@ -9,6 +9,10 @@ public class ErikManager : MonoBehaviour
     [SerializeField] private AIPath ErikAIPath;
     [SerializeField] private string ErikCurrentState;
 
+    private Collider erikCollider;
+    private Camera playerCam;
+    private Plane[] cameraFrustum;
+
     private string[] avalibleStates = { "Chase", "Lurk", "Patrol", "Idle" };
 
     [SerializeField] private bool PlayerInSight;
@@ -16,9 +20,9 @@ public class ErikManager : MonoBehaviour
 
     [SerializeField] private float MaxChaseTime;
 
-
+    private bool obstacleBlocksPlayerVision;
     //private List<Action> AvalibleStates;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +30,11 @@ public class ErikManager : MonoBehaviour
         ErikDestinationSetter = ErikObj.GetComponent<AIDestinationSetter>();
         ErikAIPath = ErikObj.GetComponent<AIPath>();
 
-        SetErikState("Patrol");
+        erikCollider = ErikObj.GetComponentInChildren<Collider>();
+        playerCam = Camera.main;
 
+        SetErikState("Patrol");
+        
     }
 
     // Update is called once per frame
@@ -50,9 +57,26 @@ public class ErikManager : MonoBehaviour
         {
             SetErikSpeed(numberPressed);
         }
+
+        if (erikInView())
+        {
+            SetErikState("Idle");
+        }
+        else
+        {
+            SetErikState("Patrol");
+        }
+
+       
     }
 
-    
+    private void FixedUpdate()
+    {
+        
+        
+    }
+
+
 
     /// <summary>
     /// Changes the current state of the Erik AI.
@@ -83,7 +107,28 @@ public class ErikManager : MonoBehaviour
     }
 
     
+    private bool erikInView()
+    {
+        Bounds erikColliderBounds = erikCollider.bounds;
+        cameraFrustum = GeometryUtility.CalculateFrustumPlanes(playerCam);
 
+        RaycastHit hit;
+        Physics.Raycast(playerCam.transform.position, (ErikObj.transform.position - playerCam.transform.position).normalized, out hit, Vector3.Distance(ErikObj.transform.position, playerCam.transform.position));
+
+
+        if (GeometryUtility.TestPlanesAABB(cameraFrustum, erikColliderBounds) && (hit.collider == null || hit.collider != null && hit.collider.gameObject.layer != LayerMask.NameToLayer("Obstacle")))
+        {
+            print("Can see erik");
+            return true;
+
+        }
+        else
+        {
+            print("Cannot see erik");
+            return false;
+        }
+
+    }
 
     public void SetErikSpeed(float MaxSpeed = 1, bool CanMove = true) 
     {
