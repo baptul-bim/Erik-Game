@@ -20,7 +20,7 @@ public class ErikManager : MonoBehaviour
 
     [SerializeField] private float MaxChaseTime;
 
-    private bool obstacleBlocksPlayerVision;
+   
     //private List<Action> AvalibleStates;
 
 
@@ -61,6 +61,16 @@ public class ErikManager : MonoBehaviour
         if (erikInView())
         {
             SetErikState("Idle");
+
+
+            print(Vector3.Distance(playerCam.transform.position + playerCam.transform.forward, ErikObj.transform.position) + " and " + (Vector3.Distance(playerCam.transform.position, ErikObj.transform.position) - 0.75f));
+            
+            if (Vector3.Distance(playerCam.transform.position + playerCam.transform.forward, ErikObj.transform.position) < (Vector3.Distance(playerCam.transform.position, ErikObj.transform.position) - 0.75f))
+            {
+                print("Erik looks at you.");
+                ErikObj.transform.LookAt(playerCam.transform);
+            }
+
         }
         else
         {
@@ -70,11 +80,7 @@ public class ErikManager : MonoBehaviour
        
     }
 
-    private void FixedUpdate()
-    {
-        
-        
-    }
+   
 
 
 
