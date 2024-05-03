@@ -2,26 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using Pathfinding.Util;
 public class ErikManager : MonoBehaviour
 {
     [SerializeField] private GameObject ErikObj;
     [SerializeField] private AIDestinationSetter ErikDestinationSetter;
     [SerializeField] private AIPath ErikAIPath;
     [SerializeField] private string ErikCurrentState;
+ 
 
     private Collider erikCollider;
     private Camera playerCam;
     private Plane[] cameraFrustum;
 
-    private string[] avalibleStates = { "Chase", "Lurk", "Patrol", "Idle" };
+    private string[] avalibleStates = { "Chase", "Lurk", "Patrol", "Idle", "Flee" };
 
     [SerializeField] private bool PlayerInSight;
     private float timeSinceSeenPlayer;
 
     [SerializeField] private float MaxChaseTime;
 
-   
+    [SerializeField] private float AngerValue;
     //private List<Action> AvalibleStates;
+
+    [SerializeField] private GameObject ErikLocalTargetObj;
+
+    private Vector3 lastAnchor;
+    private Vector3 previousDestination;
 
 
     // Start is called before the first frame update
@@ -33,6 +40,8 @@ public class ErikManager : MonoBehaviour
         erikCollider = ErikObj.GetComponentInChildren<Collider>();
         playerCam = Camera.main;
 
+        lastAnchor = ErikObj.transform.position;
+        previousDestination = ErikAIPath.autoRepath.lastDestination;
         SetErikState("Patrol");
         
     }
@@ -41,6 +50,7 @@ public class ErikManager : MonoBehaviour
     void Update()
     {
         timeSinceSeenPlayer += Time.deltaTime;
+        
 
         if (PlayerInSight)
         {
@@ -60,13 +70,17 @@ public class ErikManager : MonoBehaviour
 
         if (erikInView())
         {
-            SetErikState("Idle");
 
 
-            print(Vector3.Distance(playerCam.transform.position + playerCam.transform.forward, ErikObj.transform.position) + " and " + (Vector3.Distance(playerCam.transform.position, ErikObj.transform.position) - 0.75f));
-            
+            //print(Vector3.Distance(playerCam.transform.position + playerCam.transform.forward, ErikObj.transform.position) + " and " + (Vector3.Distance(playerCam.transform.position, ErikObj.transform.position) - 0.75f));
+
             if (Vector3.Distance(playerCam.transform.position + playerCam.transform.forward, ErikObj.transform.position) < (Vector3.Distance(playerCam.transform.position, ErikObj.transform.position) - 0.75f))
             {
+                SetErikState("Flee");
+            }
+            else if (ErikCurrentState != "Flee") 
+            {
+                SetErikState("Idle");
                 print("Erik looks at you.");
                 ErikObj.transform.LookAt(playerCam.transform);
             }
@@ -75,6 +89,14 @@ public class ErikManager : MonoBehaviour
         else
         {
             SetErikState("Patrol");
+
+            if (previousDestination != ErikAIPath.autoRepath.lastDestination)
+            {
+                lastAnchor = ErikObj.transform.position;
+                previousDestination = ErikAIPath.autoRepath.lastDestination;
+                print("placed new anchor");
+            }
+
         }
 
        
@@ -107,9 +129,9 @@ public class ErikManager : MonoBehaviour
 
     }
 
-    public void SetErikTarget(GameObject TargetObj)
+    public void SetErikTarget(GameObject TargetPointObj)
     {
-        ErikDestinationSetter.target = TargetObj.transform;
+        ErikDestinationSetter.target = TargetPointObj.transform;
     }
 
     
@@ -164,5 +186,11 @@ public class ErikManager : MonoBehaviour
         SetErikSpeed(0.5f);
     }
 
+    private void Flee()
+    {
+        SetErikSpeed(5.0f);
+        ErikLocalTargetObj.transform.position = lastAnchor;
+        AngerValue += 1.0f;
+    }
 }
 

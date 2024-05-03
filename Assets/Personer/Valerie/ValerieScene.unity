@@ -953,6 +953,8 @@ MonoBehaviour:
   ErikCurrentState: 
   PlayerInSight: 0
   MaxChaseTime: 4
+  AngerValue: 0
+  ErikLocalTargetObj: {fileID: 1548720886}
 --- !u!1 &1548720886
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,7 +967,7 @@ GameObject:
   - component: {fileID: 1548720889}
   - component: {fileID: 1548720888}
   m_Layer: 0
-  m_Name: le target
+  m_Name: Local Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
