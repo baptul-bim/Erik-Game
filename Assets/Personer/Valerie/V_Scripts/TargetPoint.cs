@@ -16,9 +16,6 @@ public class TargetPoint : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             RaycastAndTeleport();
-            ErikManager amogus = FindObjectOfType<ErikManager>();
-            amogus.SetErikState("Chase");
-
         }
     }
 

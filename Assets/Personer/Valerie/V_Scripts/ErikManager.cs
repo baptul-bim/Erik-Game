@@ -13,22 +13,27 @@ public class ErikManager : MonoBehaviour
 
     private Collider erikCollider;
     private Camera playerCam;
+    private GameObject playerObj;
     private Plane[] cameraFrustum;
 
     private string[] avalibleStates = { "Chase", "Lurk", "Patrol", "Idle", "Flee" };
-
+    private string previousState;
     [SerializeField] private bool PlayerInSight;
+    [SerializeField] private bool ErikInSight;
     private float timeSinceSeenPlayer;
 
     [SerializeField] private float MaxChaseTime;
+    [SerializeField] private float MaxLurkViewDistance;
 
     [SerializeField] private float AngerValue;
     //private List<Action> AvalibleStates;
 
     [SerializeField] private GameObject ErikLocalTargetObj;
-
     private Vector3 lastAnchor;
     private Vector3 previousDestination;
+
+    [SerializeField] private float ErikVisabilityProcent;
+    private float leastVisabilityValue;
 
 
     // Start is called before the first frame update
@@ -38,28 +43,55 @@ public class ErikManager : MonoBehaviour
         ErikAIPath = ErikObj.GetComponent<AIPath>();
 
         erikCollider = ErikObj.GetComponentInChildren<Collider>();
+        playerObj = FindObjectOfType<V_PlayerMovement>().gameObject;
         playerCam = Camera.main;
 
         lastAnchor = ErikObj.transform.position;
         previousDestination = ErikAIPath.autoRepath.lastDestination;
         SetErikState("Patrol");
-        
+
+        MaxChaseTime = 10.0f;
+        MaxLurkViewDistance = 10.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeSinceSeenPlayer += Time.deltaTime;
-        
 
+        PlayerInSight = erikSeePlayer();
+        ErikInSight = playerSeesErik();
+        
+        if (ErikVisabilityProcent >= 1.0f)
+        {
+            print(ErikVisabilityProcent);
+        }
+        
         if (PlayerInSight)
         {
             timeSinceSeenPlayer = 0.0f;
         }
+        else
+        {
+            timeSinceSeenPlayer += 1.0f * Time.deltaTime;
+        }
+
+        if (timeSinceSeenPlayer <= 0.0f && ErikCurrentState != "Lurk" && ErikCurrentState == "Patrol" && !ErikInSight)
+        {
+            SetErikState("Lurk");
+
+        }
+        else if (ErikCurrentState == "Lurk" && (timeSinceSeenPlayer > 5.0f || Vector3.Distance(ErikObj.transform.position, playerObj.transform.position) > MaxLurkViewDistance || ErikInSight))
+        {
+            print("stopped lurking");
+            SetErikState("Patrol");
+        }
+        
+
 
         if (ErikCurrentState == "Chase" && timeSinceSeenPlayer > MaxChaseTime) //De-aggros Erik after having chased the player for a certian time without seeing them.
         {
             SetErikState("Patrol");
+            print("Stopped chasing");
         }
 
 
@@ -68,37 +100,77 @@ public class ErikManager : MonoBehaviour
             SetErikSpeed(numberPressed);
         }
 
-        if (erikInView())
+        if (ErikInSight)
         {
 
-
             //print(Vector3.Distance(playerCam.transform.position + playerCam.transform.forward, ErikObj.transform.position) + " and " + (Vector3.Distance(playerCam.transform.position, ErikObj.transform.position) - 0.75f));
+            float distanceFromNormalPlayerCam = Vector3.Distance(playerCam.transform.position, ErikObj.transform.position) - 0.75f;
+            float cameraOffsetCenter = Vector3.Distance(playerCam.transform.position + playerCam.transform.forward, ErikObj.transform.position);
 
-            if (Vector3.Distance(playerCam.transform.position + playerCam.transform.forward, ErikObj.transform.position) < (Vector3.Distance(playerCam.transform.position, ErikObj.transform.position) - 0.75f))
+            //print("NORMAL: " + distanceFromNormalPlayerCam + ", OFFSET: " + cameraOffsetCenter);
+            if (leastVisabilityValue <= 0.0f)
             {
-                SetErikState("Flee");
+                leastVisabilityValue = distanceFromNormalPlayerCam / cameraOffsetCenter;
             }
-            else if (ErikCurrentState != "Flee") 
+
+            ErikVisabilityProcent = ((distanceFromNormalPlayerCam / cameraOffsetCenter) - leastVisabilityValue) / (1 - leastVisabilityValue);
+
+            //The true visability value is (distanceFromNormalPlayerCam / cameraOffsetCenter).
+
+           
+
+            if (cameraOffsetCenter < distanceFromNormalPlayerCam) //|| Vector3.Distance(playerCam.transform.position, ErikObj.transform.position) < 1.0f)
             {
+
+                if (distanceFromNormalPlayerCam > 1.5f && AngerValue <= 3.0f)
+                {
+                    SetErikState("Flee");
+                }
+                else 
+                {
+                    SetErikState("Chase");
+
+                }
+            }
+            else if (ErikCurrentState != "Flee" && ErikCurrentState != "Chase") //Stuff that happens when erik is within egde border of player screen
+            {
+
                 SetErikState("Idle");
                 print("Erik looks at you.");
                 ErikObj.transform.LookAt(playerCam.transform);
             }
 
         }
-        else
+        else 
         {
-            SetErikState("Patrol");
-
-            if (previousDestination != ErikAIPath.autoRepath.lastDestination)
+            ErikVisabilityProcent = 0.0f;
+            leastVisabilityValue = 0.0f;
+            if (ErikCurrentState == "Patrol" && previousDestination != ErikAIPath.autoRepath.lastDestination) //Places a new anchor position to run back to later if erik needs to flee.
+                                                                                                             //This anchor is placed everytime erik gets a new destination to follow.
             {
                 lastAnchor = ErikObj.transform.position;
                 previousDestination = ErikAIPath.autoRepath.lastDestination;
                 print("placed new anchor");
             }
+            else if (ErikCurrentState != "Patrol" && AngerValue <= 3.0f)
+            {
+                if (ErikCurrentState == "Flee") //Teleports erik to a decided position when fleeing out of player's vision
+                {
+
+                    relocateErik(lastAnchor);
+                }
+                else if (ErikCurrentState == "Idle") //Makes Erik continue his previous behaviour if player did not trigger a flee in erik and then looked away from him.
+                {
+                    SetErikState(previousState);
+                    print("erik continues " + previousState);
+                }
+            }
+
+
 
         }
 
+        
        
     }
 
@@ -110,32 +182,41 @@ public class ErikManager : MonoBehaviour
     /// Changes the current state of the Erik AI.
     /// <list type="States">
     /// Avalible States:
-    /// <item>Chase, Idle, Patrol, Lurk</item>
+    /// <item>Chase, Idle, Patrol, Lurk, Flee</item>
     /// </list>
     /// </summary>
     /// <param name="State"></param>
     public void SetErikState(string stateName)
     {
-     
-        foreach (string state in avalibleStates)
+        if (ErikCurrentState != stateName)
         {
-            if (state == stateName)
+            foreach (string state in avalibleStates)
             {
-                Invoke(stateName, 0.0f);
-                ErikCurrentState = stateName;
+                if (state == stateName)
+                {
+                    previousState = ErikCurrentState;
+                    Invoke(stateName, 0.0f);
+                    ErikCurrentState = stateName;
+                }
             }
         }
+        
         
 
     }
 
     public void SetErikTarget(GameObject TargetPointObj)
     {
-        ErikDestinationSetter.target = TargetPointObj.transform;
+        if (ErikDestinationSetter.target != ErikLocalTargetObj.transform && ErikCurrentState != "Chase")
+        {
+            ErikDestinationSetter.target = ErikLocalTargetObj.transform;
+        }
+        ErikLocalTargetObj.transform.position = TargetPointObj.transform.position;
+        
     }
 
     
-    private bool erikInView()
+    private bool playerSeesErik()
     {
         Bounds erikColliderBounds = erikCollider.bounds;
         cameraFrustum = GeometryUtility.CalculateFrustumPlanes(playerCam);
@@ -146,13 +227,13 @@ public class ErikManager : MonoBehaviour
 
         if (GeometryUtility.TestPlanesAABB(cameraFrustum, erikColliderBounds) && (hit.collider == null || hit.collider != null && hit.collider.gameObject.layer != LayerMask.NameToLayer("Obstacle")))
         {
-            print("Can see erik");
+            //print("Can see erik"); --
             return true;
 
         }
         else
         {
-            print("Cannot see erik");
+            //print("Cannot see erik");  --
             return false;
         }
 
@@ -166,9 +247,33 @@ public class ErikManager : MonoBehaviour
         ErikAIPath.canMove = CanMove;
     }
 
+    private void relocateErik(Vector3 NewErikPosition)
+    {
+        ErikLocalTargetObj.transform.position = previousDestination;
+        ErikObj.transform.position = NewErikPosition; //test
+        SetErikState("Patrol");
+        print("Relocated erik");
+    }
+
+    private bool erikSeePlayer()
+    {
+        RaycastHit hit;
+        Physics.Raycast(playerCam.transform.position, (ErikObj.transform.position - playerCam.transform.position).normalized, out hit, Vector3.Distance(ErikObj.transform.position, playerCam.transform.position));
+        if (hit.collider == null || hit.collider != null && hit.collider.gameObject.layer != LayerMask.NameToLayer("Obstacle"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     private void Chase()
     {
+        ErikDestinationSetter.target = playerObj.transform;
         SetErikSpeed(3);
+
+        print("started chasing");
     }
 
     private void Idle()
@@ -178,12 +283,19 @@ public class ErikManager : MonoBehaviour
 
     private void Patrol()
     {
+        if (ErikDestinationSetter.target != ErikLocalTargetObj.transform)
+        {
+            ErikDestinationSetter.target = ErikLocalTargetObj.transform;
+        }
         SetErikSpeed(1.5f);
+        print("Started patrolling");
     }
 
     private void Lurk()
     {
         SetErikSpeed(0.5f);
+        ErikDestinationSetter.target = playerObj.transform;
+        print("Started lurking");
     }
 
     private void Flee()
@@ -191,6 +303,9 @@ public class ErikManager : MonoBehaviour
         SetErikSpeed(5.0f);
         ErikLocalTargetObj.transform.position = lastAnchor;
         AngerValue += 1.0f;
+        print("Started fleeing");
     }
+
+    
 }
 
