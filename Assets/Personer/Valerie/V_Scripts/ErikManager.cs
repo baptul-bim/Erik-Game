@@ -156,8 +156,7 @@ public class ErikManager : MonoBehaviour
             {
                 if (ErikCurrentState == "Flee") //Teleports erik to a decided position when fleeing out of player's vision
                 {
-
-                    relocateErik(lastAnchor);
+                    relocateErik(lastAnchor); //Replace lastAnchor with a decent point to teleport to.
                 }
                 else if (ErikCurrentState == "Idle") //Makes Erik continue his previous behaviour if player did not trigger a flee in erik and then looked away from him.
                 {
