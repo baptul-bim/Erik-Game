@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class gameManager : MonoBehaviour
+public class buttons : MonoBehaviour
 {
     void Start()
     {
@@ -18,6 +18,11 @@ public class gameManager : MonoBehaviour
     public void Play()
     {
         SceneManager.LoadScene("placeholder scene");
+    }
+
+    public void mainMenu()
+    {
+        SceneManager.LoadScene("mainMenu");
     }
 
     public void Quit()
