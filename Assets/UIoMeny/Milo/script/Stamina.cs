@@ -1,13 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class Stamina : MonoBehaviour
 {
-    public int staminaSlider;
+    public int maxStamina;
+    public int currentStamina;
 
-    // Update is called once per frame
+    public Slider slider;
+
+    void Start()
+    {
+        currentStamina = maxStamina;
+        slider.maxValue = maxStamina;
+        slider.value = currentStamina;
+    }
+
+    public void whileRunning()
+    {
+        slider.value = currentStamina;
+    }
+
     void Update()
     {
         
