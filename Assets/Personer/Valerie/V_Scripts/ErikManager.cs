@@ -224,7 +224,7 @@ public class ErikManager : MonoBehaviour
         Physics.Raycast(playerCam.transform.position, (ErikObj.transform.position - playerCam.transform.position).normalized, out hit, Vector3.Distance(ErikObj.transform.position, playerCam.transform.position));
 
 
-        if (GeometryUtility.TestPlanesAABB(cameraFrustum, erikColliderBounds) && (hit.collider == null || hit.collider != null && hit.collider.gameObject.layer != LayerMask.NameToLayer("Obstacle")))
+        if (GeometryUtility.TestPlanesAABB(cameraFrustum, erikColliderBounds) && (hit.collider == null || hit.collider != null && hit.collider.gameObject.tag == "Player"))
         {
             //print("Can see erik"); --
             return true;
@@ -258,7 +258,7 @@ public class ErikManager : MonoBehaviour
     {
         RaycastHit hit;
         Physics.Raycast(playerCam.transform.position, (ErikObj.transform.position - playerCam.transform.position).normalized, out hit, Vector3.Distance(ErikObj.transform.position, playerCam.transform.position));
-        if (hit.collider == null || hit.collider != null && hit.collider.gameObject.layer != LayerMask.NameToLayer("Obstacle"))
+        if (hit.collider == null || hit.collider != null && hit.collider.gameObject.tag == "Player")
         {
             return true;
         }
