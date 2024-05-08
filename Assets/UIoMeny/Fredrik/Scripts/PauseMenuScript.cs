@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenuScript : MonoBehaviour
@@ -27,6 +28,7 @@ public class PauseMenuScript : MonoBehaviour
             if(pauseMenu.activeSelf == false)
             {
                 pauseMenu.SetActive(true);
+
             }
             else if(pauseMenu.activeSelf == true)
             {
@@ -51,5 +53,15 @@ public class PauseMenuScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void QuitGame()
+    {
+            Application.Quit();
     }
 }
