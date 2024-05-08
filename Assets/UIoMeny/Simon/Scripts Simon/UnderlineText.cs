@@ -31,6 +31,14 @@ public class UnderlineText : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            StopUnderline();
+        }
+    }
+
+    public void StopUnderline()
+    {
+        currentText.text = Text;
     }
 }
