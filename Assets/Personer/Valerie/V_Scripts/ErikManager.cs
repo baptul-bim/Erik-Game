@@ -5,10 +5,10 @@ using Pathfinding;
 using Pathfinding.Util;
 public class ErikManager : MonoBehaviour
 {
-    [SerializeField] private GameObject ErikObj;
+    public GameObject ErikObj;
     [SerializeField] private AIDestinationSetter ErikDestinationSetter;
     [SerializeField] private AIPath ErikAIPath;
-    [SerializeField] private string ErikCurrentState;
+    public string ErikCurrentState;
 
 
     private Collider erikCollider;
@@ -60,7 +60,11 @@ public class ErikManager : MonoBehaviour
         MaxChaseTime = 10.0f;
         MaxLurkViewDistance = 10.0f;
 
-
+        if (ErikLocalTargetObj == null)
+        {
+            ErikLocalTargetObj = Instantiate<GameObject>(GameObject.CreatePrimitive(PrimitiveType.Sphere));
+            ErikLocalTargetObj.name = "LocalErikTarget";
+        }
 
     }
 
@@ -101,7 +105,7 @@ public class ErikManager : MonoBehaviour
         {
             timeSinceSeenPlayer += 1.0f * Time.deltaTime;
 
-            //if (ErikAIPath.reachedEndOfPath && ErikAIPath.)
+            
         }
 
         
@@ -135,10 +139,11 @@ public class ErikManager : MonoBehaviour
         {
 
             //print(Vector3.Distance(playerCam.transform.position + playerCam.transform.forward, ErikObj.transform.position) + " and " + (Vector3.Distance(playerCam.transform.position, ErikObj.transform.position) - 0.75f));
-            float distanceFromNormalPlayerCam = Vector3.Distance(playerCam.transform.position, ErikObj.transform.position) - 0.75f;
+            float normalCamOffset = 0.85f;
+            float distanceFromNormalPlayerCam = Vector3.Distance(playerCam.transform.position, ErikObj.transform.position) - normalCamOffset;
             float cameraOffsetCenter = Vector3.Distance(playerCam.transform.position + playerCam.transform.forward, ErikObj.transform.position);
 
-            //print("NORMAL: " + distanceFromNormalPlayerCam + ", OFFSET: " + cameraOffsetCenter);
+            print("NORMAL: " + distanceFromNormalPlayerCam + ", OFFSET: " + cameraOffsetCenter);
             if (leastVisabilityValue <= 0.0f)
             {
                 leastVisabilityValue = distanceFromNormalPlayerCam / cameraOffsetCenter;
@@ -155,6 +160,7 @@ public class ErikManager : MonoBehaviour
 
                 if (distanceFromNormalPlayerCam > 1.5f && AngerValue <= 3.0f)
                 {
+                    //print(ErikVisabilityProcent);
                     SetErikState("Flee");
                 }
                 else 
