@@ -9,7 +9,7 @@ public class ErikManager : MonoBehaviour
     [SerializeField] private AIDestinationSetter ErikDestinationSetter;
     [SerializeField] private AIPath ErikAIPath;
     [SerializeField] private string ErikCurrentState;
- 
+
 
     private Collider erikCollider;
     private Camera playerCam;
@@ -35,10 +35,17 @@ public class ErikManager : MonoBehaviour
     [SerializeField] private float ErikVisabilityProcent;
     private float leastVisabilityValue;
 
+    delegate void ErikSeesPlayerDelegate();
+    delegate void ChooseNewTargetPosition();
 
+    ErikSeesPlayerDelegate erikSeeCallback = delegateErikSeesPlayer;
+    ChooseNewTargetPosition erikEndPath = delegateErikEndPath;
+    private float timeSinceEndOfPath;
+    
     // Start is called before the first frame update
     void Start()
     {
+        
         ErikDestinationSetter = ErikObj.GetComponent<AIDestinationSetter>();
         ErikAIPath = ErikObj.GetComponent<AIPath>();
 
@@ -52,6 +59,9 @@ public class ErikManager : MonoBehaviour
 
         MaxChaseTime = 10.0f;
         MaxLurkViewDistance = 10.0f;
+
+
+
     }
 
     // Update is called once per frame
@@ -61,6 +71,19 @@ public class ErikManager : MonoBehaviour
         PlayerInSight = erikSeePlayer();
         ErikInSight = playerSeesErik();
         
+        if (ErikAIPath.reachedEndOfPath)
+        {
+            if (timeSinceEndOfPath > 1.0f)
+            {
+                delegateErikEndPath();
+            }
+            timeSinceEndOfPath = 0.0f;
+        }
+        else
+        {
+            timeSinceEndOfPath += 1.0f * Time.deltaTime;
+        }
+
         if (ErikVisabilityProcent >= 1.0f)
         {
             print(ErikVisabilityProcent);
@@ -68,12 +91,20 @@ public class ErikManager : MonoBehaviour
         
         if (PlayerInSight)
         {
+            if (timeSinceSeenPlayer > 1.0f)
+            {
+                delegateErikSeesPlayer();
+            }
             timeSinceSeenPlayer = 0.0f;
         }
         else
         {
             timeSinceSeenPlayer += 1.0f * Time.deltaTime;
+
+            //if (ErikAIPath.reachedEndOfPath && ErikAIPath.)
         }
+
+        
 
         if (timeSinceSeenPlayer <= 0.0f && ErikCurrentState != "Lurk" && ErikCurrentState == "Patrol" && !ErikInSight)
         {
@@ -94,11 +125,11 @@ public class ErikManager : MonoBehaviour
             print("Stopped chasing");
         }
 
-
+        /*
         if (int.TryParse(Input.inputString, out int numberPressed)) //Debug tool: Changes Erik's speed to the corresponding numeric key pressed.
         {
             SetErikSpeed(numberPressed);
-        }
+        }*/
 
         if (ErikInSight)
         {
@@ -214,7 +245,15 @@ public class ErikManager : MonoBehaviour
         
     }
 
-    
+    private static void delegateErikEndPath()
+    {
+        print("erik reached end of path");
+    }
+    private static void delegateErikSeesPlayer()
+    {
+        print("erik saw player");
+    }
+
     private bool playerSeesErik()
     {
         Bounds erikColliderBounds = erikCollider.bounds;

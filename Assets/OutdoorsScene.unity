@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 21.652514, g: 14.403353, b: 12.556551, a: 1}
+  m_IndirectSpecularColor: {r: 20.021406, g: 12.58983, b: 9.768495, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12543,6 +12543,14 @@ PrefabInstance:
     - target: {fileID: 6947121382977064405, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
       propertyPath: m_Name
       value: Erik
+      objectReference: {fileID: 0}
+    - target: {fileID: 7393496847070703297, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
+      propertyPath: pickNextWaypointDist
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398835562121836635, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
+      propertyPath: graphMask.value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
