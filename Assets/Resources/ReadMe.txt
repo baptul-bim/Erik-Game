@@ -1,0 +1,1 @@
+- This folder should contain sub folders with appropriate naming (don't name the folders after ur name but rather by what the folder contains, for example player/models and player/texture or levels/models and levels/texture)
