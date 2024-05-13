@@ -5,25 +5,29 @@ using UnityEngine.UI;
 
 public class Stamina : MonoBehaviour
 {
-    public int maxStamina;
-    public int currentStamina;
+    public float tempStamina;
+    public float tempMaxStamina;
 
-    public Slider slider;
+    public Slider staminaSlider;
 
     void Start()
     {
-        currentStamina = maxStamina;
-        slider.maxValue = maxStamina;
-        slider.value = currentStamina;
-    }
 
-    public void whileRunning()
-    {
-        slider.value = currentStamina;
     }
 
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            tempStamina -= Time.deltaTime;
+        }
+        else
+        {
+            tempStamina += 0.5f * Time.deltaTime;
+        }
+
+        tempStamina = Mathf.Clamp(tempStamina, 0, tempMaxStamina);
+
+        staminaSlider.value = tempStamina;
     }
 }
