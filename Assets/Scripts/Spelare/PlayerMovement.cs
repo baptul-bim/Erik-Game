@@ -32,6 +32,10 @@ public class PlayerMove : MonoBehaviour
     public float crouchYScale;
     private float startYScale;
 
+    [Header("Hiding")]
+    public bool hiding;
+    public LayerMask hideRoof;
+
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode jumpKeyController = KeyCode.JoystickButton0;
@@ -93,6 +97,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         grounded = Physics.Raycast(transform.position, Vector2.down, playerHeight * 0.5f + 0.2f, whatIsGround);//grounded is true if the raycast looking for whatIsGround layer is hitting ground
+        hiding = Physics.Raycast(transform.position, Vector2.up, playerHeight * 0.5f + 0.2f, hideRoof);
 
         if (grounded)//apply drag when grounded
         {
@@ -130,15 +135,17 @@ public class PlayerMove : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);//make the player shorter when crouching
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);//add force down so the player isn't floating
         }
-
-        if ((Input.GetKeyUp(crouchKey) || Input.GetKeyUp(crouchKeyController)))
+        if (!hiding)
         {
-            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);//make the player normal hight when not crouching
+            if ((!Input.GetKey(crouchKey) && !Input.GetKey(crouchKeyController)))
+            {
+                transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);//make the player normal hight when not crouching
+            }
         }
     }
     private void StateHandler()
     {
-        if (grounded && Input.GetKey(crouchKey))
+        if ((grounded && Input.GetKey(crouchKey)) || hiding)
         {
             state = MovementState.crouching;
             desiredMoveSpeed = crouchSpeed;

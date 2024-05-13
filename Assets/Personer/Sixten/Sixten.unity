@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: orientation
       value: 
       objectReference: {fileID: 102800660}
+    - target: {fileID: 3272016063850308635, guid: 7c72c754f474f774a8d3b42d91a05839, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4370019738456251019, guid: 7c72c754f474f774a8d3b42d91a05839, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -243,6 +247,18 @@ PrefabInstance:
     - target: {fileID: 2078902036990654258, guid: aa98c0efe5b2d634eb319dcfbf21c8c8, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615713276216897994, guid: aa98c0efe5b2d634eb319dcfbf21c8c8, type: 3}
+      propertyPath: jumpForce
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615713276216897994, guid: aa98c0efe5b2d634eb319dcfbf21c8c8, type: 3}
+      propertyPath: crouchSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615713276216897994, guid: aa98c0efe5b2d634eb319dcfbf21c8c8, type: 3}
+      propertyPath: hideRoof.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 6615713276216897994, guid: aa98c0efe5b2d634eb319dcfbf21c8c8, type: 3}
       propertyPath: whatIsGround.m_Bits
@@ -485,7 +501,7 @@ GameObject:
   - component: {fileID: 418724285}
   - component: {fileID: 418724284}
   - component: {fileID: 418724283}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
