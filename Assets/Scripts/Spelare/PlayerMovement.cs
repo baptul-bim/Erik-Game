@@ -97,7 +97,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         grounded = Physics.Raycast(transform.position, Vector2.down, playerHeight * 0.5f + 0.2f, whatIsGround);//grounded is true if the raycast looking for whatIsGround layer is hitting ground
-        hiding = Physics.Raycast(transform.position, Vector2.up, playerHeight * 0.5f + 0.2f, hideRoof);
+        hiding = Physics.Raycast(transform.position, Vector2.up, playerHeight * 0.5f + 0.2f, hideRoof);//checks if the roof of the hidingspot is above the player, Extend the hitbox of the hidingspot roof slitly to prevent the player from bugging into the roof
 
         if (grounded)//apply drag when grounded
         {
@@ -145,7 +145,7 @@ public class PlayerMove : MonoBehaviour
     }
     private void StateHandler()
     {
-        if ((grounded && Input.GetKey(crouchKey)) || hiding)
+        if ((grounded && Input.GetKey(crouchKey)) || hiding)//changes the state to crouching if crouch key is held or if the player is in a hidingspot 
         {
             state = MovementState.crouching;
             desiredMoveSpeed = crouchSpeed;
