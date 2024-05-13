@@ -35,11 +35,11 @@ public class ErikManager : MonoBehaviour
     [SerializeField] private float ErikVisabilityProcent;
     private float leastVisabilityValue;
 
-    delegate void ErikSeesPlayerDelegate();
-    delegate void ChooseNewTargetPosition();
+    public delegate void ErikSeesPlayerDelegate();
+    public delegate void ChooseNewTargetPosition();
 
-    ErikSeesPlayerDelegate erikSeeCallback = delegateErikSeesPlayer;
-    ChooseNewTargetPosition erikEndPath = delegateErikEndPath;
+    public ErikSeesPlayerDelegate erikSeeCallback;
+    public ChooseNewTargetPosition erikEndPath;
     private float timeSinceEndOfPath;
     
     // Start is called before the first frame update
@@ -79,7 +79,7 @@ public class ErikManager : MonoBehaviour
         {
             if (timeSinceEndOfPath > 1.0f)
             {
-                delegateErikEndPath();
+                erikEndPath();
             }
             timeSinceEndOfPath = 0.0f;
         }
@@ -97,7 +97,7 @@ public class ErikManager : MonoBehaviour
         {
             if (timeSinceSeenPlayer > 1.0f)
             {
-                delegateErikSeesPlayer();
+                erikSeeCallback();
             }
             timeSinceSeenPlayer = 0.0f;
         }
