@@ -11,6 +11,9 @@ public class PauseMenuScript : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject mainPauseMenu;
     public GameObject optionsMenu;
+    public GameObject optionsMainMenu;
+    public GameObject sensitivityMenu;
+    public GameObject audioMenu;
     public GameObject aYSMainMenuScreen;
     public GameObject aYSQuitScreen;
 
@@ -34,8 +37,26 @@ public class PauseMenuScript : MonoBehaviour
             {
                 if(optionsMenu.activeSelf == true)
                 {
-                    optionsMenu.SetActive(false);
-                    mainPauseMenu.SetActive(true);
+                    if(optionsMainMenu.activeSelf == true)
+                    {
+                        optionsMenu.SetActive(false);
+                        mainPauseMenu.SetActive(true);
+                    }
+                    else if(sensitivityMenu.activeSelf == true)
+                    {
+                        sensitivityMenu.SetActive(false);
+                        optionsMainMenu.SetActive(true);
+                    }
+                    else if (audioMenu.activeSelf == true)
+                    {
+                        audioMenu.SetActive(false);
+                        optionsMainMenu.SetActive(true);
+                    }
+                    else
+                    {
+                        optionsMenu.SetActive(false);
+                        mainPauseMenu.SetActive(true);
+                    }
                 }
                 else if (aYSMainMenuScreen.activeSelf == true)
                 {
