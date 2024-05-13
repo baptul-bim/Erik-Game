@@ -24,3 +24,10 @@ Lösare regler, samt semantik.
 
 - Merge conflicts med kodfiler är relativt enkla att lösa, det är dock inte merge conflicts angående prefabs/scener, så försäkra er om att ni är den enda personen som arbetar på en scene vid en given tid.
 
+## Guides
+Lägger till fler saker här vid behov.
+
+### Att skapa forks
+https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project?tool=desktop 
+
+
