@@ -9,11 +9,15 @@ public class SensOptions : MonoBehaviour
     [SerializeField]
     Slider SensSlider;
     [SerializeField]
+    TMP_InputField SilderNumber;
+    [SerializeField]
     Toggle YAxis;
     [SerializeField]
     Toggle XAxis;
     [SerializeField]
     TextMeshProUGUI SliderValue;
+    [SerializeField]
+    TextMeshProUGUI text_;
 
     bool InvertY;
     bool InvertX;
@@ -28,7 +32,7 @@ public class SensOptions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SliderValue.text = SensSlider.value.ToString("0.00");
+       
 
         sens = SensSlider.value * 1000;
 
@@ -41,5 +45,19 @@ public class SensOptions : MonoBehaviour
         {
             InvertX = true;
         }
+    }
+
+    public void SliderChange()
+    {
+        SilderNumber.text = SensSlider.value.ToString("0");
+    }
+
+   
+    public void TestInput()
+    {
+        float i = 0;
+        float.TryParse(SilderNumber.text, out i);
+        SensSlider.value = i;
+
     }
 }
