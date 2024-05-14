@@ -38,8 +38,8 @@ public class ErikManager : MonoBehaviour
     public delegate void ErikSeesPlayerDelegate();
     public delegate void ChooseNewTargetPosition();
 
-    public ErikSeesPlayerDelegate erikSeeCallback;
-    public ChooseNewTargetPosition erikEndPath;
+    public static event ErikSeesPlayerDelegate erikSeeCallback;
+    public static event ChooseNewTargetPosition erikEndPath;
     private float timeSinceEndOfPath;
 
     AIDestinationPicker erikDestPicker;

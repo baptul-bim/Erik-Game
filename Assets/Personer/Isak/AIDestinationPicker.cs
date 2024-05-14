@@ -10,13 +10,13 @@ public class AIDestinationPicker : MonoBehaviour
     [SerializeField]
     GameObject player;
 
-    WeightedList<GameObject> w_list = new WeightedList<GameObject>();
+    public WeightedList<GameObject> w_list = new WeightedList<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
         ErikManager manager = gameObject.GetComponent<ErikManager>();
-        manager.erikSeeCallback += UpdateWeights;
-        manager.erikEndPath += UpdateTarget;
+        ErikManager.erikSeeCallback += UpdateWeights;
+        ErikManager.erikEndPath += UpdateTarget;
 
         foreach (GameObject go in list)
         {
