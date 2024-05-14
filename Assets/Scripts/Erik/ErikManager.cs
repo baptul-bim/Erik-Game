@@ -41,7 +41,8 @@ public class ErikManager : MonoBehaviour
     public ErikSeesPlayerDelegate erikSeeCallback;
     public ChooseNewTargetPosition erikEndPath;
     private float timeSinceEndOfPath;
-    
+
+    AIDestinationPicker erikDestPicker;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +53,7 @@ public class ErikManager : MonoBehaviour
         ErikAIPath = ErikObj.GetComponent<AIPath>();
 
         erikCollider = ErikObj.GetComponentInChildren<Collider>();
-        playerObj = FindObjectOfType<V_PlayerMovement>().gameObject;
+        playerObj = FindObjectOfType<V_PlayerMovement>().gameObject; //Change so that playerObj changes to sixtens player
         playerCam = Camera.main;
 
         lastAnchor = ErikObj.transform.position;
@@ -68,6 +69,7 @@ public class ErikManager : MonoBehaviour
             ErikLocalTargetObj.name = "LocalErikTarget";
         }
 
+        erikDestPicker = gameObject.GetComponent<AIDestinationPicker>();
     }
 
     // Update is called once per frame
@@ -82,6 +84,7 @@ public class ErikManager : MonoBehaviour
             if (timeSinceEndOfPath > 1.0f)
             {
                 erikEndPath(); //erik reach end of path
+                
             }
             timeSinceEndOfPath = 0.0f;
         }
@@ -106,8 +109,6 @@ public class ErikManager : MonoBehaviour
         else
         {
             timeSinceSeenPlayer += 1.0f * Time.deltaTime;
-
-            
         }
 
         
@@ -254,11 +255,17 @@ public class ErikManager : MonoBehaviour
         
     }
 
-    private static void delegateErikEndPath()
+    private void delegateErikEndPath()
     {
+        if (ErikCurrentState == "Chase")
+        {
+            erikhitPlayer();
+        }
+
         print("erik reached end of path");
+
     }
-    private static void delegateErikSeesPlayer()
+    private void delegateErikSeesPlayer()
     {
         print("erik saw player");
     }
@@ -314,6 +321,17 @@ public class ErikManager : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private void erikhitPlayer()
+    {
+        print("erik hit the player");
+
+        //Do damage against player here
+        //If player health reaches 0, play final jumpscare
+
+        relocateErik(previousDestination);
+
     }
     private void Chase()
     {
