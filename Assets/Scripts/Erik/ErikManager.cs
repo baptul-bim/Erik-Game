@@ -45,7 +45,9 @@ public class ErikManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        erikSeeCallback = delegateErikSeesPlayer;
+        erikEndPath = delegateErikEndPath;
+
         ErikDestinationSetter = ErikObj.GetComponent<AIDestinationSetter>();
         ErikAIPath = ErikObj.GetComponent<AIPath>();
 
@@ -79,7 +81,7 @@ public class ErikManager : MonoBehaviour
         {
             if (timeSinceEndOfPath > 1.0f)
             {
-                erikEndPath();
+                erikEndPath(); //erik reach end of path
             }
             timeSinceEndOfPath = 0.0f;
         }
@@ -97,7 +99,7 @@ public class ErikManager : MonoBehaviour
         {
             if (timeSinceSeenPlayer > 1.0f)
             {
-                erikSeeCallback();
+                erikSeeCallback(); //Erik see u
             }
             timeSinceSeenPlayer = 0.0f;
         }
@@ -243,6 +245,7 @@ public class ErikManager : MonoBehaviour
 
     public void SetErikTarget(GameObject TargetPointObj)
     {
+        print("trying to set target to " + TargetPointObj);
         if (ErikDestinationSetter.target != ErikLocalTargetObj.transform && ErikCurrentState != "Chase")
         {
             ErikDestinationSetter.target = ErikLocalTargetObj.transform;
