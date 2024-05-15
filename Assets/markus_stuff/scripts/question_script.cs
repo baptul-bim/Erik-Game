@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class question_script : MonoBehaviour
 {
     [SerializeField]
     //the answer buttons
-    public Image[] answers;
+    public TextMeshProUGUI[] answers;
     //the questions 
      string[] questions= 
         {
@@ -89,15 +90,18 @@ public class question_script : MonoBehaviour
     private string correctanswer2;
     private string correctanswer3;
     private string correctanswer4;
-    
+
     // Start is called before the first frame update
+
+
     
-    
-      
     
     //selects the questions the questions
        void start_englishTask()
-        {       
+        {
+
+        
+
           question1answerd = false;
         question2answerd = false;
         question3answerd = false;
@@ -125,9 +129,9 @@ public class question_script : MonoBehaviour
                     correctanswer2 = answer[question2 * 4];
                     correctanswer3 = answer[question3 * 4];
                     correctanswer4 = answer[question4 * 4];
-                    foreach(Image i in answers)
+                    foreach(string i in  questions)
                     {
-                        i.enabled = true;
+                        
                     }
                     answerOrder();
                 }
