@@ -59,7 +59,7 @@ public class PlayerMove : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
-    Vector3 moveDirection;
+    public Vector3 moveDirection;
 
     Rigidbody rb;
 
@@ -87,7 +87,8 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(state == MovementState.sprinting && stamina >= 0)
+        //print(rb.velocity.magnitude.ToString("F1")); 
+        if (state == MovementState.sprinting && stamina >= 0)
         {
             stamina -= Time.deltaTime;
         }
@@ -187,10 +188,11 @@ public class PlayerMove : MonoBehaviour
         while (time < difference)//smoothly lerp movement speed to desired movement speed
         {
             moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
-
+            print("Checking if on slope:");
             if (OnSlope())
             {
                 float slopeAngle = Vector3.Angle(Vector3.up, slopeHit.normal);
+                
                 float slopeAngleIncrease = 1 + (slopeAngle / 90f);
 
                 time += Time.deltaTime * speedIncreaseMultiplier * slopeIncreaseMultiplier * slopeAngleIncrease;
@@ -214,7 +216,7 @@ public class PlayerMove : MonoBehaviour
 
             if (rb.velocity.y > 0)
             {
-                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+                //rb.AddForce(Vector3.down * 80f, ForceMode.Force);
             }
         }
 
@@ -268,7 +270,7 @@ public class PlayerMove : MonoBehaviour
     }
     public bool OnSlope()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))//makes a raykast to get information of the fround the player is standing on
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))//makes a raykast to get information of the ground the player is standing on
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);//calculates the angle of the object the raycast hits
             return angle < maxSlopeAngle && angle != 0;//return on slope as true if the angle of the ground below the player isn't 0 and is less than the max slope angle
