@@ -7,7 +7,8 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     public float timeLeft;
-    public Text timer;
+    public TextMeshProUGUI timer;
+   // public TMP_Text displayText;
 
     // Start is called before the first frame update
     void Start()
@@ -19,5 +20,7 @@ public class Timer : MonoBehaviour
     void Update()
     {
         timeLeft -= Time.deltaTime;
+        //  displayText.SetText("Time Left: " + timeLeft);
+        timer.text = timeLeft.ToString("0.00");
     }
 }
