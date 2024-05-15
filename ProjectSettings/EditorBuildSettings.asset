@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/UIoMeny/Maja/placeholder scene.unity
+    guid: 9183322f6f867ea4f83e5168d22c0c18
+  - enabled: 1
+    path: Assets/scenes/mainMenu.unity
+    guid: 6f628d4e704d563439cb574cc5f2cefe
   m_configObjects: {}
