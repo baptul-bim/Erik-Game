@@ -8,7 +8,6 @@ public class Timer : MonoBehaviour
 {
     public float timeLeft;
     public TextMeshProUGUI timer;
-   // public TMP_Text displayText;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +19,8 @@ public class Timer : MonoBehaviour
     void Update()
     {
         timeLeft -= Time.deltaTime;
-        //  displayText.SetText("Time Left: " + timeLeft);
-        timer.text = timeLeft.ToString("0.00");
+
+        // mängden nollor efter 0. är mängden decimaler. 
+        timer.text = timeLeft.ToString("Time Left: " + "0.00");
     }
 }
