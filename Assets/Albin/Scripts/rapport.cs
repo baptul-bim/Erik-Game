@@ -32,6 +32,60 @@ public class rapport : MonoBehaviour
     GameObject row9;
     [SerializeField]
     GameObject row10;
+    [SerializeField]
+    GameObject row11;
+    [SerializeField]
+    GameObject row12;
+    [SerializeField]
+    GameObject row13;
+    [SerializeField]
+    GameObject row14;
+    [SerializeField]
+    GameObject row15;
+    [SerializeField]
+    GameObject row16;
+    [SerializeField]
+    GameObject row17;
+    [SerializeField]
+    GameObject row18;
+    [SerializeField]
+    GameObject row19;
+    [SerializeField]
+    GameObject row20;
+    [SerializeField]
+    GameObject row21;
+    [SerializeField]
+    GameObject row22;
+    [SerializeField]
+    GameObject row23;
+    [SerializeField]
+    GameObject row24;
+    [SerializeField]
+    GameObject row25;
+    [SerializeField]
+    GameObject row26;
+    [SerializeField]
+    GameObject row27;
+    [SerializeField]
+    GameObject row28;
+    [SerializeField]
+    GameObject row29;
+    [SerializeField]
+    GameObject row30;
+    [SerializeField]
+    GameObject row31;
+    [SerializeField]
+    GameObject row32;
+    [SerializeField]
+    GameObject row33;
+    [SerializeField]
+    GameObject row34;
+    [SerializeField]
+    GameObject row35;
+    [SerializeField]
+    GameObject row36;
+    [SerializeField]
+    GameObject row37;
 
 
 
@@ -56,6 +110,33 @@ public class rapport : MonoBehaviour
         row8.SetActive(false);
         row9.SetActive(false);
         row10.SetActive(false);
+        row11.SetActive(false);
+        row12.SetActive(false);
+        row13.SetActive(false);
+        row14.SetActive(false);
+        row15.SetActive(false);
+        row16.SetActive(false);
+        row17.SetActive(false);
+        row18.SetActive(false);
+        row19.SetActive(false);
+        row20.SetActive(false);
+        row21.SetActive(false);
+        row22.SetActive(false);
+        row23.SetActive(false);
+        row24.SetActive(false);
+        row25.SetActive(false);
+        row26.SetActive(false);
+        row27.SetActive(false);
+        row28.SetActive(false);
+        row29.SetActive(false);
+        row30.SetActive(false);
+        row31.SetActive(false);
+        row32.SetActive(false);
+        row33.SetActive(false);
+        row34.SetActive(false);
+        row35.SetActive(false);
+        row36.SetActive(false);
+        row37.SetActive(false);
         färdig_rapportUI.SetActive(false);
         rapportUI.SetActive(false);
         facitUI.SetActive(false);
@@ -85,6 +166,33 @@ public class rapport : MonoBehaviour
                 row8.SetActive(true);
                 row9.SetActive(true);
                 row10.SetActive(true);
+                row11.SetActive(true);
+                row12.SetActive(true);
+                row13.SetActive(true);
+                row14.SetActive(true);
+                row15.SetActive(true);
+                row16.SetActive(true);
+                row17.SetActive(true);
+                row18.SetActive(true);
+                row19.SetActive(true);
+                row20.SetActive(true);
+                row21.SetActive(true);
+                row22.SetActive(true);
+                row23.SetActive(true);
+                row24.SetActive(true);
+                row25.SetActive(true);
+                row26.SetActive(true);
+                row27.SetActive(true);
+                row28.SetActive(true);
+                row29.SetActive(true);
+                row30.SetActive(true);
+                row31.SetActive(true);
+                row32.SetActive(true);
+                row33.SetActive(true);
+                row34.SetActive(true);
+                row35.SetActive(true);
+                row36.SetActive(true);
+                row37.SetActive(true);
                 färdig_rapportUI.SetActive(true);
                 facitUI.SetActive(true);
             }
@@ -103,6 +211,33 @@ public class rapport : MonoBehaviour
             row8.SetActive(false);
             row9.SetActive(false);
             row10.SetActive(false);
+            row11.SetActive(false);
+            row12.SetActive(false);
+            row13.SetActive(false);
+            row14.SetActive(false);
+            row15.SetActive(false);
+            row16.SetActive(false);
+            row17.SetActive(false);
+            row18.SetActive(false);
+            row19.SetActive(false);
+            row20.SetActive(false);
+            row21.SetActive(false);
+            row22.SetActive(false);
+            row23.SetActive(false);
+            row24.SetActive(false);
+            row25.SetActive(false);
+            row26.SetActive(false);
+            row27.SetActive(false);
+            row28.SetActive(false);
+            row29.SetActive(false);
+            row30.SetActive(false);
+            row31.SetActive(false);
+            row32.SetActive(false);
+            row33.SetActive(false);
+            row34.SetActive(false);
+            row35.SetActive(false);
+            row36.SetActive(false);
+            row37.SetActive(false);
             färdig_rapportUI.SetActive(false);
             rapportUI.SetActive(false);
             facitUI.SetActive(false);
@@ -153,6 +288,114 @@ public class rapport : MonoBehaviour
             if (typing >= 11)
             {
                 row10.SetActive(false);
+            }
+            if (typing >= 12)
+            {
+                row11.SetActive(false);
+            }
+            if (typing >= 13)
+            {
+                row12.SetActive(false);
+            }
+            if (typing >= 14)
+            {
+                row13.SetActive(false);
+            }
+            if (typing >= 15)
+            {
+                row14.SetActive(false);
+            }
+            if (typing >= 16)
+            {
+                row15.SetActive(false);
+            }
+            if (typing >= 17)
+            {
+                row16.SetActive(false);
+            }
+            if (typing >= 18)
+            {
+                row17.SetActive(false);
+            }
+            if (typing >= 19)
+            {
+                row18.SetActive(false);
+            }
+            if (typing >= 20)
+            {
+                row19.SetActive(false);
+            }
+            if (typing >= 21)
+            {
+                row20.SetActive(false);
+            }
+            if (typing >= 22)
+            {
+                row21.SetActive(false);
+            }
+            if (typing >= 23)
+            {
+                row22.SetActive(false);
+            }
+            if (typing >= 24)
+            {
+                row23.SetActive(false);
+            }
+            if (typing >= 25)
+            {
+                row24.SetActive(false);
+            }
+            if (typing >= 26)
+            {
+                row25.SetActive(false);
+            }
+            if (typing >= 27)
+            {
+                row26.SetActive(false);
+            }
+            if (typing >= 28)
+            {
+                row27.SetActive(false);
+            }
+            if (typing >= 29)
+            {
+                row28.SetActive(false);
+            }
+            if (typing >= 30)
+            {
+                row29.SetActive(false);
+            }
+            if (typing >= 31)
+            {
+                row30.SetActive(false);
+            }
+            if (typing >= 32)
+            {
+                row31.SetActive(false);
+            }
+            if (typing >= 33)
+            {
+                row32.SetActive(false);
+            }
+            if (typing >= 34)
+            {
+                row33.SetActive(false);
+            }
+            if (typing >= 35)
+            {
+                row34.SetActive(false);
+            }
+            if (typing >= 36)
+            {
+                row35.SetActive(false);
+            }
+            if (typing >= 37)
+            {
+                row36.SetActive(false);
+            }
+            if (typing >= 38)
+            {
+                row37.SetActive(false);
                 done = true;
                 färdig_rapportUI.SetActive(false);
                 rapportUI.SetActive(false);
