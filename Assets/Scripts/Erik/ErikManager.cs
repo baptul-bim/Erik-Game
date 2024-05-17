@@ -106,7 +106,14 @@ public class ErikManager : MonoBehaviour
             timeSinceSeenPlayer += 1.0f * Time.deltaTime;
         }
 
-        
+        if (ErikCurrentState == "Flee")
+        {
+            //ErikObj.transform.GetChild(0).transform.LookAt(ErikObj.transform.position -ErikObj.transform.forward); //Erik looks the oppisite way of where he is running
+            ErikObj.transform.GetChild(0).transform.LookAt(playerObj.transform); //Erik looks at the player while he is running away
+
+
+        }
+
 
         if (timeSinceSeenPlayer <= 0.0f && ErikCurrentState != "Lurk" && ErikCurrentState == "Patrol" && !ErikInSight)
         {
@@ -361,6 +368,20 @@ public class ErikManager : MonoBehaviour
         ErikLocalTargetObj.transform.position = lastAnchor;
         AngerValue += 1.0f;
         print("Started fleeing");
+    }
+
+    public Material ErikOnMaterial()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(ErikObj.transform.position, Vector3.down, out hit) && hit.collider.tag == "WhatIsGround")
+        {
+            return hit.collider.GetComponent<Material>();
+        }
+        else
+        {
+            return null;
+        }
+
     }
 
     
