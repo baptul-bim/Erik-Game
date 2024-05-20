@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4821383510351072273}
   - component: {fileID: 7697545427401525324}
+  - component: {fileID: 5154420176998108501}
   m_Layer: 0
   m_Name: ErikManagerObj
   m_TagString: Untagged
@@ -55,3 +56,21 @@ MonoBehaviour:
   AngerValue: 0
   ErikLocalTargetObj: {fileID: 0}
   ErikVisabilityProcent: 0
+--- !u!114 &5154420176998108501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7818331890912244183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7360fdedfffff5249a6057730d183f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  list:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  player: {fileID: 0}
