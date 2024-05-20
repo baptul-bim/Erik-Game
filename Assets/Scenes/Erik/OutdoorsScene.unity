@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.33694, g: 325.04984, b: 430.2193, a: 1}
+  m_IndirectSpecularColor: {r: 20.015947, g: 12.58497, b: 9.763185, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3920,29 +3920,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184547467}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &184683994 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7818331890912244183, guid: 8732b34e2adafb74689af7d39db186f8, type: 3}
-  m_PrefabInstance: {fileID: 580372649}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &184683997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184683994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7360fdedfffff5249a6057730d183f9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  list:
-  - {fileID: 1238616049}
-  - {fileID: 1138448451}
-  - {fileID: 379854904}
-  - {fileID: 1413604551}
-  player: {fileID: 1044858391}
 --- !u!1 &189698520
 GameObject:
   m_ObjectHideFlags: 0
@@ -11056,6 +11033,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5154420176998108501, guid: 8732b34e2adafb74689af7d39db186f8, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1044858391}
+    - target: {fileID: 5154420176998108501, guid: 8732b34e2adafb74689af7d39db186f8, type: 3}
+      propertyPath: list.Array.data[0]
+      value: 
+      objectReference: {fileID: 1238616049}
+    - target: {fileID: 5154420176998108501, guid: 8732b34e2adafb74689af7d39db186f8, type: 3}
+      propertyPath: list.Array.data[1]
+      value: 
+      objectReference: {fileID: 1138448451}
+    - target: {fileID: 5154420176998108501, guid: 8732b34e2adafb74689af7d39db186f8, type: 3}
+      propertyPath: list.Array.data[2]
+      value: 
+      objectReference: {fileID: 379854904}
+    - target: {fileID: 5154420176998108501, guid: 8732b34e2adafb74689af7d39db186f8, type: 3}
+      propertyPath: list.Array.data[3]
+      value: 
+      objectReference: {fileID: 1413604551}
     - target: {fileID: 7697545427401525324, guid: 8732b34e2adafb74689af7d39db186f8, type: 3}
       propertyPath: ErikObj
       value: 
@@ -11071,10 +11068,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7818331890912244183, guid: 8732b34e2adafb74689af7d39db186f8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 184683997}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8732b34e2adafb74689af7d39db186f8, type: 3}
 --- !u!1 &595307259
 GameObject:
@@ -12705,22 +12699,6 @@ PrefabInstance:
     - target: {fileID: 6947121382977064405, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
       propertyPath: m_Name
       value: Erik
-      objectReference: {fileID: 0}
-    - target: {fileID: 7393496847070703297, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
-      propertyPath: slowdownDistance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7393496847070703297, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
-      propertyPath: pickNextWaypointDist
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7393496847070703297, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
-      propertyPath: whenCloseToDestination
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7398835562121836635, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
-      propertyPath: graphMask.value
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
