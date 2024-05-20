@@ -50,7 +50,7 @@ public class ErikManager : MonoBehaviour
         ErikAIPath = ErikObj.GetComponent<AIPath>();
 
         erikCollider = ErikObj.GetComponentInChildren<Collider>();
-        playerObj = FindObjectOfType<V_PlayerMovement>().gameObject;
+        playerObj = GameObject.FindGameObjectWithTag("Player");
         playerCam = Camera.main;
 
         lastAnchor = ErikObj.transform.position;
