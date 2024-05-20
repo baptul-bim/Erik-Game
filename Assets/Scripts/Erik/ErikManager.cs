@@ -256,7 +256,7 @@ public class ErikManager : MonoBehaviour
 
     private void delegateErikEndPath()
     {
-        if (ErikCurrentState == "Chase")
+        if (ErikCurrentState == "Chase" && Vector3.Distance(ErikObj.transform.position, playerObj.transform.position) < 2.5f) //2.5f is an arbitrary number. This "sort of" fixes a bug where erik can hit you while not actually being near you.
         {
             erikhitPlayer();
         }
