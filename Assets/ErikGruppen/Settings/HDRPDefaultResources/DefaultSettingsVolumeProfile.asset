@@ -65,6 +65,61 @@ MonoBehaviour:
   m_SampleCount:
     m_OverrideState: 1
     m_Value: 8
+--- !u!114 &-6978165186189661611
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81bcacc415a1f743bfdf703afc52027, type: 3}
+  m_Name: GradientSky
+  m_EditorClassIdentifier: 
+  active: 1
+  rotation:
+    m_OverrideState: 0
+    m_Value: 0
+  skyIntensityMode:
+    m_OverrideState: 0
+    m_Value: 0
+  exposure:
+    m_OverrideState: 0
+    m_Value: 0
+  multiplier:
+    m_OverrideState: 0
+    m_Value: 1
+  upperHemisphereLuxValue:
+    m_OverrideState: 0
+    m_Value: 1
+  upperHemisphereLuxColor:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0, z: 0}
+  desiredLuxValue:
+    m_OverrideState: 0
+    m_Value: 20000
+  updateMode:
+    m_OverrideState: 0
+    m_Value: 0
+  updatePeriod:
+    m_OverrideState: 0
+    m_Value: 0
+  includeSunInBaking:
+    m_OverrideState: 0
+    m_Value: 0
+  top:
+    m_OverrideState: 1
+    m_Value: {r: 0.38364774, g: 0.6336079, b: 1, a: 1}
+  middle:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.32706025, b: 0.2980392, a: 1}
+  bottom:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.8354322, b: 0.5157232, a: 1}
+  gradientDiffusion:
+    m_OverrideState: 0
+    m_Value: 1
 --- !u!114 &-4710711564516068460
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -436,6 +491,7 @@ MonoBehaviour:
   - {fileID: 6641533981656100573}
   - {fileID: -2049544540041615172}
   - {fileID: -788746823045303410}
+  - {fileID: -6978165186189661611}
 --- !u!114 &448115243408767295
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -463,10 +519,10 @@ MonoBehaviour:
     m_Value: 1
   upperHemisphereLuxValue:
     m_OverrideState: 1
-    m_Value: 32.71092
+    m_Value: 32.710896
   upperHemisphereLuxColor:
     m_OverrideState: 1
-    m_Value: {x: 0.5, y: 0.4469614, z: 0.4860103}
+    m_Value: {x: 0.5, y: 0.4469612, z: 0.48601052}
   desiredLuxValue:
     m_OverrideState: 0
     m_Value: 20000
