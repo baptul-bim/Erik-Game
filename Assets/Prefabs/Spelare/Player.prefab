@@ -120,6 +120,8 @@ MonoBehaviour:
   readyToJump: 0
   crouchSpeed: 1.5
   crouchYScale: 0.5
+  stunned: {fileID: 8526282366561278529}
+  stunnedSpeed: 1
   hiding: 0
   hideRoof:
     serializedVersion: 2
@@ -151,6 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008608e19cee0e04a974b55dad052851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHearts: 3
+  heartsLeft: 3
+  stunned: 0
 --- !u!1 &6103147119353190578
 GameObject:
   m_ObjectHideFlags: 0
