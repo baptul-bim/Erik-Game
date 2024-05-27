@@ -14,6 +14,7 @@ public class PauseMenuScript : MonoBehaviour
     public GameObject optionsMainMenu;
     public GameObject sensitivityMenu;
     public GameObject audioMenu;
+    public GameObject graphicsMenu;
     public GameObject aYSMainMenuScreen;
     public GameObject aYSQuitScreen;
 
@@ -50,6 +51,11 @@ public class PauseMenuScript : MonoBehaviour
                     else if (audioMenu.activeSelf == true)
                     {
                         audioMenu.SetActive(false);
+                        optionsMainMenu.SetActive(true);
+                    }
+                    else if (graphicsMenu.activeSelf == true)
+                    {
+                        graphicsMenu.SetActive(false);
                         optionsMainMenu.SetActive(true);
                     }
                     else
