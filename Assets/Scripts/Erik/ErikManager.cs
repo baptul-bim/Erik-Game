@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using System.Linq;
 using Pathfinding.Util;
 public class ErikManager : MonoBehaviour
 {
@@ -35,22 +36,24 @@ public class ErikManager : MonoBehaviour
     [SerializeField] private float ErikVisabilityProcent;
     private float leastVisabilityValue;
 
-    delegate void ErikSeesPlayerDelegate();
-    delegate void ChooseNewTargetPosition();
+    public delegate void ErikSeesPlayerDelegate();
+    public delegate void ChooseNewTargetPosition();
 
-    ErikSeesPlayerDelegate erikSeeCallback = delegateErikSeesPlayer;
-    ChooseNewTargetPosition erikEndPath = delegateErikEndPath;
-    private float timeSinceEndOfPath;
-    
+    public static event ErikSeesPlayerDelegate erikSeeCallback;
+    public static event ChooseNewTargetPosition erikEndPath;
+
+    AIDestinationPicker erikDestPicker;
     // Start is called before the first frame update
     void Start()
     {
-        
+        erikSeeCallback = delegateErikSeesPlayer;
+        erikEndPath = delegateErikEndPath;
+
         ErikDestinationSetter = ErikObj.GetComponent<AIDestinationSetter>();
         ErikAIPath = ErikObj.GetComponent<AIPath>();
 
         erikCollider = ErikObj.GetComponentInChildren<Collider>();
-        playerObj = FindObjectOfType<V_PlayerMovement>().gameObject;
+        playerObj = GameObject.FindGameObjectWithTag("Player"); //Change so that playerObj changes to sixtens player
         playerCam = Camera.main;
 
         lastAnchor = ErikObj.transform.position;
@@ -66,6 +69,7 @@ public class ErikManager : MonoBehaviour
             ErikLocalTargetObj.name = "LocalErikTarget";
         }
 
+        erikDestPicker = gameObject.GetComponent<AIDestinationPicker>();
     }
 
     // Update is called once per frame
@@ -77,15 +81,11 @@ public class ErikManager : MonoBehaviour
         
         if (ErikAIPath.reachedEndOfPath)
         {
-            if (timeSinceEndOfPath > 1.0f)
-            {
-                delegateErikEndPath();
-            }
-            timeSinceEndOfPath = 0.0f;
-        }
-        else
-        {
-            timeSinceEndOfPath += 1.0f * Time.deltaTime;
+            erikEndPath(); //Erik reach end of path. A random point to walk towards.
+                           //While observed it may look like a bug that erik can choose a lot of points in a short time frame,
+                           //it actually works as intended and also fixes a bug where he would choose the same point he arrived to and then never walk again.
+
+            
         }
 
         if (ErikVisabilityProcent >= 1.0f)
@@ -97,18 +97,23 @@ public class ErikManager : MonoBehaviour
         {
             if (timeSinceSeenPlayer > 1.0f)
             {
-                delegateErikSeesPlayer();
+                erikSeeCallback(); //Erik see u
             }
             timeSinceSeenPlayer = 0.0f;
         }
         else
         {
             timeSinceSeenPlayer += 1.0f * Time.deltaTime;
-
-            
         }
 
-        
+        if (ErikCurrentState == "Flee")
+        {
+            //ErikObj.transform.GetChild(0).transform.LookAt(ErikObj.transform.position -ErikObj.transform.forward); //Erik looks the oppisite way of where he is running
+            ErikObj.transform.GetChild(0).transform.LookAt(playerObj.transform); //Erik looks at the player while he is running away
+
+
+        }
+
 
         if (timeSinceSeenPlayer <= 0.0f && ErikCurrentState != "Lurk" && ErikCurrentState == "Patrol" && !ErikInSight)
         {
@@ -129,21 +134,15 @@ public class ErikManager : MonoBehaviour
             print("Stopped chasing");
         }
 
-        /*
-        if (int.TryParse(Input.inputString, out int numberPressed)) //Debug tool: Changes Erik's speed to the corresponding numeric key pressed.
-        {
-            SetErikSpeed(numberPressed);
-        }*/
-
+      
         if (ErikInSight)
         {
 
-            //print(Vector3.Distance(playerCam.transform.position + playerCam.transform.forward, ErikObj.transform.position) + " and " + (Vector3.Distance(playerCam.transform.position, ErikObj.transform.position) - 0.75f));
             float normalCamOffset = 0.85f;
             float distanceFromNormalPlayerCam = Vector3.Distance(playerCam.transform.position, ErikObj.transform.position) - normalCamOffset;
             float cameraOffsetCenter = Vector3.Distance(playerCam.transform.position + playerCam.transform.forward, ErikObj.transform.position);
 
-            print("NORMAL: " + distanceFromNormalPlayerCam + ", OFFSET: " + cameraOffsetCenter);
+            //-print("NORMAL: " + distanceFromNormalPlayerCam + ", OFFSET: " + cameraOffsetCenter);
             if (leastVisabilityValue <= 0.0f)
             {
                 leastVisabilityValue = distanceFromNormalPlayerCam / cameraOffsetCenter;
@@ -191,9 +190,12 @@ public class ErikManager : MonoBehaviour
             }
             else if (ErikCurrentState != "Patrol" && AngerValue <= 3.0f)
             {
-                if (ErikCurrentState == "Flee") //Teleports erik to a decided position when fleeing out of player's vision
+                if (ErikCurrentState == "Flee") //Teleports erik to a decided position when fleeing out of player's vision, this position is supposed to be far away from the player.
                 {
-                    relocateErik(lastAnchor); //Replace lastAnchor with a decent point to teleport to.
+                    erikDestPicker.w_list.Sort((a,b) => a.Weight.CompareTo(b.Weight));
+                    //print("Distance between player and highest weight" + Vector3.Distance(playerObj.transform.position, erikDestPicker.w_list[erikDestPicker.w_list.Count - 1].Item.transform.position));
+                    relocateErik(erikDestPicker.w_list[erikDestPicker.w_list.Count - 1].Item.transform.position); //For some reason the item with most weight is the item farthest away from the player.
+
                 }
                 else if (ErikCurrentState == "Idle") //Makes Erik continue his previous behaviour if player did not trigger a flee in erik and then looked away from him.
                 {
@@ -243,6 +245,7 @@ public class ErikManager : MonoBehaviour
 
     public void SetErikTarget(GameObject TargetPointObj)
     {
+        print("trying to set target to " + TargetPointObj);
         if (ErikDestinationSetter.target != ErikLocalTargetObj.transform && ErikCurrentState != "Chase")
         {
             ErikDestinationSetter.target = ErikLocalTargetObj.transform;
@@ -251,11 +254,17 @@ public class ErikManager : MonoBehaviour
         
     }
 
-    private static void delegateErikEndPath()
+    private void delegateErikEndPath()
     {
+        if (ErikCurrentState == "Chase" && Vector3.Distance(ErikObj.transform.position, playerObj.transform.position) < 2.5f) //2.5f is an arbitrary number. This "sort of" fixes a bug where erik can hit you while not actually being near you.
+        {
+            erikhitPlayer();
+        }
+
         print("erik reached end of path");
+
     }
-    private static void delegateErikSeesPlayer()
+    private void delegateErikSeesPlayer()
     {
         print("erik saw player");
     }
@@ -293,8 +302,8 @@ public class ErikManager : MonoBehaviour
 
     private void relocateErik(Vector3 NewErikPosition)
     {
-        ErikLocalTargetObj.transform.position = previousDestination;
         ErikObj.transform.position = NewErikPosition; //test
+        print("distance between new point and player " + Vector3.Distance(playerObj.transform.position, NewErikPosition));
         SetErikState("Patrol");
         print("Relocated erik");
     }
@@ -311,6 +320,17 @@ public class ErikManager : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private void erikhitPlayer()
+    {
+        print("erik hit the player");
+
+        //Do damage against player here
+        //If player health reaches 0, play final jumpscare
+
+        relocateErik(erikDestPicker.w_list.RandomItem().transform.position);
+
     }
     private void Chase()
     {
@@ -348,6 +368,20 @@ public class ErikManager : MonoBehaviour
         ErikLocalTargetObj.transform.position = lastAnchor;
         AngerValue += 1.0f;
         print("Started fleeing");
+    }
+
+    public Material ErikOnMaterial()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(ErikObj.transform.position, Vector3.down, out hit) && hit.collider.tag == "WhatIsGround")
+        {
+            return hit.collider.GetComponent<Material>();
+        }
+        else
+        {
+            return null;
+        }
+
     }
 
     

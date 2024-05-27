@@ -10,8 +10,8 @@ public class rapport : MonoBehaviour
     GameObject färdig_rapportUI;
     [SerializeField]
     GameObject facitUI;
-    [SerializeField]
-    GameObject text;
+    //[SerializeField]
+    //GameObject text;
     [SerializeField]
     GameObject row1;
     [SerializeField]
@@ -140,7 +140,7 @@ public class rapport : MonoBehaviour
         färdig_rapportUI.SetActive(false);
         rapportUI.SetActive(false);
         facitUI.SetActive(false);
-        text.SetActive(false);
+        //text.SetActive(false);
     }
 
     // Update is called once per frame
@@ -152,7 +152,7 @@ public class rapport : MonoBehaviour
             if (facit == false)
             {
                 rapportUI.SetActive(true);
-                text.SetActive(true);
+                //text.SetActive(true);
             }
             if (facit == true) 
             {
@@ -241,7 +241,7 @@ public class rapport : MonoBehaviour
             färdig_rapportUI.SetActive(false);
             rapportUI.SetActive(false);
             facitUI.SetActive(false);
-            text.SetActive(false);
+            //text.SetActive(false);
         }
         if (tasking == true)
         {
@@ -400,7 +400,7 @@ public class rapport : MonoBehaviour
                 färdig_rapportUI.SetActive(false);
                 rapportUI.SetActive(false);
                 facitUI.SetActive(false);
-                text.SetActive(false);
+                //text.SetActive(false);
             }
         }
     }
