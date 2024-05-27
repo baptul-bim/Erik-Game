@@ -11,6 +11,8 @@ public class rapport : MonoBehaviour
     [SerializeField]
     GameObject facitUI;
     [SerializeField]
+    GameObject tip;
+    [SerializeField]
     GameObject text;
     [SerializeField]
     GameObject row1;
@@ -141,6 +143,7 @@ public class rapport : MonoBehaviour
         rapportUI.SetActive(false);
         facitUI.SetActive(false);
         text.SetActive(false);
+        tip.SetActive(false);
     }
 
     // Update is called once per frame
@@ -148,14 +151,15 @@ public class rapport : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            tasking = true;
             if (facit == false)
             {
                 rapportUI.SetActive(true);
                 text.SetActive(true);
+                tip.SetActive(true);
             }
             if (facit == true) 
             {
+                tasking = true;
                 row1.SetActive(true);
                 row2.SetActive(true);
                 row3.SetActive(true);
@@ -242,6 +246,7 @@ public class rapport : MonoBehaviour
             rapportUI.SetActive(false);
             facitUI.SetActive(false);
             text.SetActive(false);
+            tip.SetActive(false);
         }
         if (tasking == true)
         {
