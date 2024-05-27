@@ -7,7 +7,7 @@ public class rapport : MonoBehaviour
     [SerializeField]
     GameObject rapportUI;
     [SerializeField]
-    GameObject färdig_rapportUI;
+    GameObject fÃ¤rdig_rapportUI;
     [SerializeField]
     GameObject facitUI;
     //[SerializeField]
@@ -137,10 +137,11 @@ public class rapport : MonoBehaviour
         row35.SetActive(false);
         row36.SetActive(false);
         row37.SetActive(false);
-        färdig_rapportUI.SetActive(false);
+        fï¿½rdig_rapportUI.SetActive(false);
         rapportUI.SetActive(false);
         facitUI.SetActive(false);
-        //text.SetActive(false);
+        text.SetActive(false);
+        tip.SetActive(false);
     }
 
     // Update is called once per frame
@@ -148,14 +149,15 @@ public class rapport : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            tasking = true;
             if (facit == false)
             {
                 rapportUI.SetActive(true);
-                //text.SetActive(true);
+                text.SetActive(true);
+                tip.SetActive(true);
             }
             if (facit == true) 
             {
+                tasking = true;
                 row1.SetActive(true);
                 row2.SetActive(true);
                 row3.SetActive(true);
@@ -193,7 +195,7 @@ public class rapport : MonoBehaviour
                 row35.SetActive(true);
                 row36.SetActive(true);
                 row37.SetActive(true);
-                färdig_rapportUI.SetActive(true);
+                fï¿½rdig_rapportUI.SetActive(true);
                 facitUI.SetActive(true);
             }
         }
@@ -238,10 +240,11 @@ public class rapport : MonoBehaviour
             row35.SetActive(false);
             row36.SetActive(false);
             row37.SetActive(false);
-            färdig_rapportUI.SetActive(false);
+            fï¿½rdig_rapportUI.SetActive(false);
             rapportUI.SetActive(false);
             facitUI.SetActive(false);
-            //text.SetActive(false);
+            text.SetActive(false);
+            tip.SetActive(false);
         }
         if (tasking == true)
         {
@@ -397,7 +400,7 @@ public class rapport : MonoBehaviour
             {
                 row37.SetActive(false);
                 done = true;
-                färdig_rapportUI.SetActive(false);
+                fï¿½rdig_rapportUI.SetActive(false);
                 rapportUI.SetActive(false);
                 facitUI.SetActive(false);
                 //text.SetActive(false);
