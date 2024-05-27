@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class randomCode_script : MonoBehaviour
 {
+    public string code;
     public int number1;
     public int number2;
     public int number3;
-    public int number4;
-    public int number5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +20,8 @@ public class randomCode_script : MonoBehaviour
         number1 = rng.Next(0, 10);
         number2 = rng.Next(0, 10);
         number3 = rng.Next(0, 10);
-        number4 = rng.Next(0, 10);
-        number5 = rng.Next(0, 10);
+        code =""+number1 + number2 + number3;
+
     }
 
     // Update is called once per frame
