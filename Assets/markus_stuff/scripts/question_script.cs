@@ -9,6 +9,8 @@ public class question_script : MonoBehaviour
     [SerializeField]
     //the answer buttons
     public TextMeshProUGUI[] answers;
+    [SerializeField]
+    public TextMeshProUGUI[] quest;
     //the questions 
      string[] questions= 
         {
@@ -29,7 +31,7 @@ public class question_script : MonoBehaviour
         new string("tomfoolery"),
         new string("autonomy"),
         new string("empirical"),
-        new string("syndrome"),
+        new string("terrify"),
         new string("court"),
         new string("morsel"),
     };
@@ -53,7 +55,7 @@ public class question_script : MonoBehaviour
     new string("to behave in a silly manor"),new string("to trick somone into making a mistake"),new string("when the result of an action is nonsentical"),new string("when a tomcat causes trouble"),
     new string("the right to govern oneself"),new string("the structure of living things"),new string("another word for machine"),new string("to earn forgivness"),
     new string("an obsevation based on experience"),new string("a discriptor to signify inperial status"),new string("a word to mock the inperial family"),new string("a judgement based on emotion"),
-    new string("18answer1"),new string("18answer2"),new string("18answer3"),new string("18answer4"),
+    new string("couse to feel extrem fear"),new string("a descriptor of somthing good"),new string("a fried dish invented by terry Trautman"),new string("a word for heavy traffic"),
     new string("a romantic advance with the intention to marry"),new string("a form of transportation"),new string("another word for count"),new string("a noble title during the victorian era"),
     new string("a mouthfull of food"),new string("another word for mortal"),new string("a shorthand for 'more to sell'"),new string("a type of eel"),
     };
@@ -66,22 +68,6 @@ public class question_script : MonoBehaviour
     private bool question2answerd;
     private bool question3answerd;
     private bool question4answerd;
-    private string answer1;
-    private string answer2;
-    private string answer3;
-    private string answer4;
-    private string answer5;
-    private string answer6;
-    private string answer7;
-    private string answer8;
-    private string answer9;
-    private string answer10;
-    private string answer11;
-    private string answer12;
-    private string answer13;
-    private string answer14;
-    private string answer15; 
-    private string answer16;
     private string answertoquestion1;
     private string answertoquestion2;
     private string answertoquestion3;
@@ -112,27 +98,31 @@ public class question_script : MonoBehaviour
     private void QustionPicker()
     {
         System.Random rng = new System.Random();
-        question1 = rng.Next(0, 21);
+        question1 = rng.Next(0, 20);
     questionCheck1:
-        question2 = rng.Next(0, 21);
+        question2 = rng.Next(0, 20);
         if (question2 != question1)
         {
         questionCheck2:
-            question3 = rng.Next(0, 21);
+            question3 = rng.Next(0, 20);
             if (question3 != question2 && question3 != question1)
             {
             questioncheck3:
-                question4 = rng.Next(0, 21);
+                question4 = rng.Next(0, 20);
                 if (question4 != question3 && question4 != question2 && question4 != question1)
                 {
                     correctanswer1 = answer[question1*4];
+                    print(correctanswer1 + "correct 1");
                     correctanswer2 = answer[question2 * 4];
+                    print(correctanswer2+ "correct 2");
                     correctanswer3 = answer[question3 * 4];
+                    print(correctanswer3 + "correct 3");
                     correctanswer4 = answer[question4 * 4];
-                    foreach(string i in  questions)
-                    {
-                        
-                    }
+                    print(correctanswer4 + "correct 4");
+                    quest[0].text = questions[question1];
+                    quest[1].text = questions[question2];
+                    quest[2].text = questions[question3];
+                    quest[3].text = questions[question4];
                     answerOrder();
                 }
                 else
@@ -155,74 +145,74 @@ public class question_script : MonoBehaviour
     private void answerOrder()
     {
         System.Random rng = new System.Random();
-       int answerslot1= rng.Next(0+question1, 4+question1);
+       int answerslot1= rng.Next(0+(question1*4), 4+(question1*4));
     answerCheck1:
-        int answerslot2 =rng.Next(0 + question1, 4 + question1);
+        int answerslot2 =rng.Next(0 + (question1*4), 4 + (question1*4));
         if(answerslot2!=answerslot1)
         {
         answerCheck2:
-            int answerslot3 = rng.Next(0 + question1, 4 + question1);
+            int answerslot3 = rng.Next(0 + (question1*4), 4 + (question1*4));
             if(answerslot3!=answerslot1&&answerslot3!=answerslot2)
             {
             answercheck3:
-                int answerslot4 = rng.Next(0 + question1, 4 + question1);
+                int answerslot4 = rng.Next(0 + (question1*4), 4 + (question1*4));
                 if(answerslot4!=answerslot3&&answerslot4!=answerslot2&&answerslot4!=answerslot1)
                 {
-                    int answerslot12 = rng.Next(0 + question2, 4 + question2);
+                    int answerslot12 = rng.Next(0 + (question2*4), 4 + (question2*4));
                 answerCheck4:
-                    int answerslot22 = rng.Next(0 + question2, 4 + question2);
+                    int answerslot22 = rng.Next(0 + (question2*4), 4 + (question2*4));
                     if (answerslot22 != answerslot12)
                     {
                     answerCheck5:
-                        int answerslot32 = rng.Next(0 + question2, 4 + question2);
-                        if (answerslot32 != answerslot1 && answerslot3 != answerslot2)
+                        int answerslot32 = rng.Next(0 + (question2*4), 4 + (question2*4));
+                        if (answerslot32 != answerslot12 && answerslot32 != answerslot22)
                         {
                         answercheck6:
-                            int answerslot42 = rng.Next(0 + question2, 4 + question2);
-                            if (answerslot42 != answerslot3 && answerslot4 != answerslot2 && answerslot4 != answerslot1)
+                            int answerslot42 = rng.Next(0 + (question2*4), 4 + (question2*4));
+                            if (answerslot42 != answerslot32 && answerslot42 != answerslot22 && answerslot42 != answerslot12)
                             {
-                                int answerslot13 = rng.Next(0 + question3, 4 + question3);
+                                int answerslot13 = rng.Next(0 + (question3*4), 4 + (question3*4));
                             answerCheck7:
-                                int answerslot23 = rng.Next(0 + question3, 4 + question3);
+                                int answerslot23 = rng.Next(0 + (question3*4), 4 + (question3*4));
                                 if (answerslot23 != answerslot13)
                                 {
                                 answerCheck8:
-                                    int answerslot33 = rng.Next(0 + question3, 4 + question3);
+                                    int answerslot33 = rng.Next(0 + (question3)*4, 4 + (question3*4));
                                     if (answerslot33 != answerslot13 && answerslot33 != answerslot23)
                                     {
                                     answercheck9:
-                                        int answerslot43 = rng.Next(0 + question3, 4 + question3);
-                                        if (answerslot43 != answerslot33 && answerslot43 != answerslot23 && answerslot13 != answerslot1)
+                                        int answerslot43 = rng.Next(0 + (question3*4), 4 + (question3*4));
+                                        if (answerslot43 != answerslot33 && answerslot43 != answerslot23 && answerslot43 != answerslot13)
                                         {
-                                            int answerslot14 = rng.Next(0 + question4, 4 + question4);
+                                            int answerslot14 = rng.Next(0 + (question4*4), 4 + (question4*4));
                                         answerCheck10:
-                                            int answerslot24 = rng.Next(0 + question4, 4 + question4);
+                                            int answerslot24 = rng.Next(0 + (question4*4), 4 + (question4*4));
                                             if (answerslot24 != answerslot14)
                                             {
                                             answerCheck11:
-                                                int answerslot34 = rng.Next(0 + question4, 4 + question4);
+                                                int answerslot34 = rng.Next(0 + (question4*4), 4 + (question4*4));
                                                 if (answerslot34 != answerslot14 && answerslot34 != answerslot24)
                                                 {
                                                 answercheck12:
-                                                    int answerslot44 = rng.Next(0 + question4, 4 + question4);
+                                                    int answerslot44 = rng.Next(0 + (question4*4), 4 + (question4*4));
                                                     if (answerslot44 != answerslot34 && answerslot44 != answerslot24 && answerslot44 != answerslot14)
                                                     {
-                                                        answer1 = answer[answerslot1];
-                                                        answer2 = answer[answerslot2];
-                                                        answer3 = answer[answerslot3];
-                                                        answer4 = answer[answerslot4];
-                                                        answer5 = answer[answerslot12];
-                                                        answer6 = answer[answerslot22];
-                                                        answer7 = answer[answerslot32];
-                                                        answer8 = answer[answerslot42];
-                                                        answer9 = answer[answerslot13];
-                                                        answer10 = answer[answerslot23];
-                                                        answer11 = answer[answerslot33];
-                                                        answer12 = answer[answerslot43];
-                                                        answer13 = answer[answerslot14];
-                                                        answer14 = answer[answerslot24];
-                                                        answer15 = answer[answerslot34];
-                                                        answer16 = answer[answerslot44];
+                                                        answers[0].text = answer[answerslot1];
+                                                        answers[1].text = answer[answerslot2];
+                                                        answers[2].text = answer[answerslot3];
+                                                        answers[3].text= answer[answerslot4];
+                                                        answers[4].text = answer[answerslot12];
+                                                        answers[5].text = answer[answerslot22];
+                                                        answers[6].text = answer[answerslot32];
+                                                        answers[7].text = answer[answerslot42];
+                                                        answers[8].text = answer[answerslot13];
+                                                        answers[9].text= answer[answerslot23];
+                                                        answers[10].text= answer[answerslot33];
+                                                        answers[11].text= answer[answerslot43];
+                                                        answers[12] .text= answer[answerslot14];
+                                                        answers[13].text= answer[answerslot24];
+                                                        answers[14].text = answer[answerslot34];
+                                                        answers[15].text = answer[answerslot44];
                                                     }
                                                     else
                                                     {
@@ -290,9 +280,16 @@ public class question_script : MonoBehaviour
         //when all the questions are answerd
         if(question1answerd&&question2answerd&&question3answerd&&question4answerd)
         {
+            /*
+            print("you answerd " + answertoquestion1 + " on question 1");
+            print("you answerd " + answertoquestion2 + " on question 2");
+            print("you answerd " + answertoquestion3+ " on question 3");
+            print("you answerd " + answertoquestion4+ " on question 4");
+            */
             //if all answers are correct
-            if(answertoquestion1==correctanswer1&&answertoquestion2==correctanswer2&&answertoquestion3==correctanswer3&&answertoquestion4==correctanswer4)
+            if (answertoquestion1==correctanswer1&&answertoquestion2==correctanswer2&&answertoquestion3==correctanswer3&&answertoquestion4==correctanswer4)
             {
+                
                 //tells the english task to compleat
                 SendMessageUpwards("Englishtask_cleared",SendMessageOptions.RequireReceiver);
             }
@@ -300,7 +297,8 @@ public class question_script : MonoBehaviour
             else
             {
                 //tells the english task to close
-                SendMessageUpwards("close_englishTask",SendMessageOptions.RequireReceiver);
+                print("ya failed");
+              SendMessageUpwards("close_englishTask",SendMessageOptions.RequireReceiver);
             }
         }
     }
@@ -309,8 +307,10 @@ public class question_script : MonoBehaviour
     {
         if(!question1answerd)
         {
-            print(answer1);
-            answertoquestion1 = answer1;
+            print(answers[0].text);
+            answertoquestion1 = answers[0].text;
+            print(answertoquestion1+"tester1");
+            
             question1answerd = true;
         }
     }
@@ -318,8 +318,8 @@ public class question_script : MonoBehaviour
     {
         if (!question1answerd)
         {
-            print(answer2);
-            answertoquestion1 = answer2;
+            print(answers[1].text);
+            answertoquestion1 = answers[1].text;
             question1answerd = true;
         }
     }
@@ -327,8 +327,8 @@ public class question_script : MonoBehaviour
     {
         if (!question1answerd)
         {
-            print(answer3);
-            answertoquestion1 = answer3;
+            print(answers[2].text);
+            answertoquestion1 = answers[2].text;
             question1answerd = true;
         }
     }
@@ -336,8 +336,8 @@ public class question_script : MonoBehaviour
     {
         if (!question1answerd)
         {
-            print(answer4);
-            answertoquestion1 = answer4;
+            print(answers[3].text);
+            answertoquestion1 = answers[3].text;
             question1answerd = true;
         }
     }
@@ -345,8 +345,8 @@ public class question_script : MonoBehaviour
     {
         if (!question2answerd)
         {
-            print(answer5);
-            answertoquestion2 = answer5;
+            print(answers[4].text);
+            answertoquestion2 = answers[4].text;
             question2answerd = true;
         }
     }
@@ -354,8 +354,8 @@ public class question_script : MonoBehaviour
     {
         if (!question2answerd)
         {
-            print(answer6);
-            answertoquestion2 = answer6;
+            print(answers[5].text);
+            answertoquestion2 = answers[5].text;
             question2answerd = true;
         }
     }
@@ -363,8 +363,8 @@ public class question_script : MonoBehaviour
     {
         if (!question2answerd)
         {
-            print(answer7);
-            answertoquestion2 = answer7;
+            print(answers[6].text);
+            answertoquestion2 = answers[6].text;
             question2answerd = true;
         }
     }
@@ -372,8 +372,8 @@ public class question_script : MonoBehaviour
     {
         if (!question2answerd)
         {
-            print(answer8);
-            answertoquestion2 = answer8;
+            print(answers[7].text);
+            answertoquestion2 = answers[7].text;
             question2answerd = true;
         }
     }
@@ -381,8 +381,8 @@ public class question_script : MonoBehaviour
     {
         if (!question3answerd)
         {
-            print(answer9);
-            answertoquestion3 = answer9;
+            print(answers[8].text);
+            answertoquestion3 = answers[8].text;
             question3answerd = true;
         }
     }
@@ -390,8 +390,8 @@ public class question_script : MonoBehaviour
     {
         if (!question3answerd)
         {
-            print(answer10);
-            answertoquestion3 = answer10;
+            print(answers[9].text);
+            answertoquestion3 = answers[9].text;
             question3answerd = true;
         }
     }
@@ -399,8 +399,8 @@ public class question_script : MonoBehaviour
     {
         if (!question3answerd)
         {
-            print(answer11);
-            answertoquestion3 = answer11;
+            print(answers[10].text);
+            answertoquestion3 = answers[10].text;
             question3answerd = true;
         }
     }
@@ -408,8 +408,8 @@ public class question_script : MonoBehaviour
     {
         if (!question3answerd)
         {
-            print(answer12);
-            answertoquestion3 = answer12;
+            print(answers[11].text);
+            answertoquestion3 = answers[11].text;
             question3answerd = true;
         }
     }
@@ -417,8 +417,8 @@ public class question_script : MonoBehaviour
     {
         if (!question4answerd)
         {
-            print(answer13);
-            answertoquestion4 = answer13;
+            print(answers[12].text);
+            answertoquestion4 = answers[12].text;
             question4answerd = true;
         }
     }
@@ -426,9 +426,8 @@ public class question_script : MonoBehaviour
     {
         if (!question4answerd)
         {
-            print(answer14);
-            answertoquestion4 = answer14;
-
+            print(answers[13].text);
+            answertoquestion4 = answers[13].text;
             question4answerd = true;
         }
     }
@@ -436,8 +435,8 @@ public class question_script : MonoBehaviour
     {
         if (!question4answerd)
         {
-            print(answer15);
-            answertoquestion4 = answer15;
+            print(answers[14].text);
+            answertoquestion4 = answers[14].text;
             question4answerd = true;
         }
     }
@@ -445,29 +444,37 @@ public class question_script : MonoBehaviour
     {
         if (!question4answerd)
         {
-            print(answer16);
-            answertoquestion4 = answer16;
+            print(answers[15].text);
+            answertoquestion4 = answers[15].text;
             question4answerd = true;
         }
     }
     //turn of all the answer buttons
      void end_englishTask()
     {
-        answers[0].enabled = false;
-        answers[1].enabled = false;
-        answers[2].enabled = false;
-        answers[3].enabled = false;
-        answers[4].enabled = false;
-        answers[5].enabled = false;
-        answers[6].enabled = false;
-        answers[7].enabled = false;
-        answers[8].enabled = false;
-        answers[9].enabled = false;
-        answers[10].enabled = false;
-        answers[11].enabled = false;
-        answers[12].enabled = false;
-        answers[13].enabled = false;
-        answers[14].enabled = false;
-        answers[15].enabled = false;
+        answers[0].text = "";
+        answers[1].text = "";
+        answers[2].text = "";
+        answers[3].text = "";
+        answers[4].text = "";
+        answers[5].text = "";
+        answers[6].text = "";
+        answers[7].text = "";
+        answers[8].text = "";
+        answers[9].text = "";
+        answers[10].text = "";
+        answers[11].text = "";
+        answers[12].text = "";
+        answers[13].text = "";
+        answers[14].text = "";
+        answers[15].text = "";
+        quest[0].text = "";
+        quest[1].text = "";
+        quest[2].text = "";
+        quest[3].text = "";
+        question1answerd = false;
+        question2answerd = false;
+        question3answerd = false;
+        question4answerd = false;
     }
 }
