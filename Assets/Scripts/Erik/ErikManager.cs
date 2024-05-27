@@ -6,6 +6,7 @@ using System.Linq;
 using Pathfinding.Util;
 public class ErikManager : MonoBehaviour
 {
+    
     public GameObject ErikObj;
     [SerializeField] private AIDestinationSetter ErikDestinationSetter;
     [SerializeField] private AIPath ErikAIPath;
@@ -43,6 +44,8 @@ public class ErikManager : MonoBehaviour
     public static event ChooseNewTargetPosition erikEndPath;
 
     AIDestinationPicker erikDestPicker;
+
+    [SerializeField] private ErikAudioManager ErikAudioMan;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +71,8 @@ public class ErikManager : MonoBehaviour
             ErikLocalTargetObj = Instantiate<GameObject>(GameObject.CreatePrimitive(PrimitiveType.Sphere));
             ErikLocalTargetObj.name = "LocalErikTarget";
         }
+
+        ErikAudioMan = ErikObj.GetComponentInChildren<ErikAudioManager>();
 
         erikDestPicker = gameObject.GetComponent<AIDestinationPicker>();
     }
@@ -246,12 +251,16 @@ public class ErikManager : MonoBehaviour
     public void SetErikTarget(GameObject TargetPointObj)
     {
         print("trying to set target to " + TargetPointObj);
-        if (ErikDestinationSetter.target != ErikLocalTargetObj.transform && ErikCurrentState != "Chase")
+        if (ErikDestinationSetter != null && ErikDestinationSetter.target != ErikLocalTargetObj.transform && ErikCurrentState != "Chase")
         {
             ErikDestinationSetter.target = ErikLocalTargetObj.transform;
         }
+
         ErikLocalTargetObj.transform.position = TargetPointObj.transform.position;
-        
+
+        print("set target to " + TargetPointObj);
+
+
     }
 
     private void delegateErikEndPath()
@@ -383,6 +392,8 @@ public class ErikManager : MonoBehaviour
         }
 
     }
+
+    
 
     
 }
