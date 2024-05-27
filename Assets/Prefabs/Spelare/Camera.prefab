@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2698518314816444793}
   - component: {fileID: 7900983005231413392}
-  - component: {fileID: 162739671764551081}
+  - component: {fileID: 3849045403544839063}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -84,7 +84,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &162739671764551081
+--- !u!114 &3849045403544839063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/mainMenu.unity
     guid: 6f628d4e704d563439cb574cc5f2cefe
+  - enabled: 1
+    path: Assets/Folder-Core/LouieWS/Sprint-Scene.unity
+    guid: b735c2ee344679441aca82ed50d43bb0
   m_configObjects: {}
