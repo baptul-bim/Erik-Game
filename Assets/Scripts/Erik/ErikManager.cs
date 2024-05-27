@@ -49,8 +49,8 @@ public class ErikManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        erikSeeCallback = delegateErikSeesPlayer;
-        erikEndPath = delegateErikEndPath;
+        erikSeeCallback += delegateErikSeesPlayer;
+        erikEndPath += delegateErikEndPath;
 
         ErikDestinationSetter = ErikObj.GetComponent<AIDestinationSetter>();
         ErikAIPath = ErikObj.GetComponent<AIPath>();
@@ -269,7 +269,7 @@ public class ErikManager : MonoBehaviour
         {
             erikhitPlayer();
         }
-
+        
         print("erik reached end of path");
 
     }
