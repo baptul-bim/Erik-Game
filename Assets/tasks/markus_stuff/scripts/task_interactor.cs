@@ -9,20 +9,20 @@ public class task_interactor : MonoBehaviour
 
     public bool task;
     public LayerMask whatistask;
-    // Start is called before the first frame update
-    
-    
-        
-    
+    // key to interact
+    [SerializeField]
+    public KeyCode interactKey;
+
 
     // Update is called once per frame
     void Update()
     { //keybind to open task 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(interactKey))
         {
             doTask();
          
         }
+      
     }
     //run when opening a task
     private void doTask()

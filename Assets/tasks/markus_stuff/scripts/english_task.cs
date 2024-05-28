@@ -9,7 +9,11 @@ public class English_task : task_script
     {
         base.startTask();
         //tells the questionscript to start
-        BroadcastMessage("start_englishTask",SendMessageOptions.RequireReceiver);
+        if(!done)
+        {
+         BroadcastMessage("start_englishTask",SendMessageOptions.RequireReceiver);
+        }
+  
     }
     //called when task is completed
     void Englishtask_cleared()

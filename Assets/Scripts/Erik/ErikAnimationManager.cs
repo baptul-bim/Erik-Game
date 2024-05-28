@@ -9,9 +9,21 @@ public class ErikAnimationManager : MonoBehaviour
 
     private ErikManager behaviourManager;
     private string erikState;
+
+    private Animator erikJumpscare;
+    private Camera jumpscareCam;
+    private Canvas jumpscareCanvas;
     // Start is called before the first frame update
     void Start()
     {
+        jumpscareCam = GameObject.Find("CanvasCamera").GetComponent<Camera>();
+        erikJumpscare = jumpscareCam.GetComponentInChildren<Animator>();
+        jumpscareCanvas = GameObject.Find("JumpscareCanvas").GetComponent<Canvas>();
+
+        jumpscareCam.gameObject.SetActive(false);
+        jumpscareCanvas.gameObject.SetActive(false);
+
+
         behaviourManager = FindObjectOfType<ErikManager>();
         ErikAnimations = behaviourManager.ErikObj.GetComponentsInChildren<Animator>();
         foreach (Animator animation in ErikAnimations)
@@ -46,6 +58,18 @@ public class ErikAnimationManager : MonoBehaviour
                 currentlyActiveAnimator.speed = 0.0f;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            PlayJumpscare();
+        }
         
+    }
+
+    public void PlayJumpscare()
+    {
+        jumpscareCam.gameObject.SetActive(true);
+        jumpscareCanvas.gameObject.SetActive(true);
+        erikJumpscare.Play(0);
     }
 }

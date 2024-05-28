@@ -17,7 +17,7 @@ public class buttons : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("placeholder scene");
+        SceneManager.LoadScene("Sprint-Scene");
     }
 
     public void mainMenu()

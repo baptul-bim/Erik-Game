@@ -20,11 +20,8 @@ public class task_script : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        //manual closing of task
-      if(Input.GetKey(KeyCode.E))
-        {
-            endTask();
-        }
+      
+        
     }
     //called to start the task
     void start_task()
@@ -35,10 +32,13 @@ public class task_script : MonoBehaviour
     //starts the task
     public virtual void startTask()
     {
-        
+        if(!done)
+        {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         image.enabled = true;
+        }
+        
     }
     //run when exiting the task without clearing it
     public virtual void endTask()
