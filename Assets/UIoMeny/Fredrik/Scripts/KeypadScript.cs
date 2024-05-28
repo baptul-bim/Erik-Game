@@ -8,6 +8,16 @@ public class KeypadScript : MonoBehaviour
     public string inputedCode;
     public int desiredCode;
     public TextMeshProUGUI inputText;
+    public GameObject mainKeypad;
+
+    //closes the kypad menu
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            mainKeypad.SetActive(false);
+        }
+    }
 
     //adds the number of the button pressed to a string, therefore placing it at the end of a string (1+1=11 type shit) unless it already has 3 digits
     public void ButtonInput(int n)
