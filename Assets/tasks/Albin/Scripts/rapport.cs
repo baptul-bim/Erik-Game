@@ -7,11 +7,13 @@ public class rapport : MonoBehaviour
     [SerializeField]
     GameObject rapportUI;
     [SerializeField]
-    GameObject färdig_rapportUI;
+    GameObject fardig_rapportUI;
     [SerializeField]
     GameObject facitUI;
-    //[SerializeField]
-    //GameObject text;
+    [SerializeField]
+    GameObject text;
+    [SerializeField]
+    GameObject tip;
     [SerializeField]
     GameObject row1;
     [SerializeField]
@@ -137,7 +139,7 @@ public class rapport : MonoBehaviour
         row35.SetActive(false);
         row36.SetActive(false);
         row37.SetActive(false);
-        f�rdig_rapportUI.SetActive(false);
+        fardig_rapportUI.SetActive(false);
         rapportUI.SetActive(false);
         facitUI.SetActive(false);
         text.SetActive(false);
@@ -195,7 +197,7 @@ public class rapport : MonoBehaviour
                 row35.SetActive(true);
                 row36.SetActive(true);
                 row37.SetActive(true);
-                f�rdig_rapportUI.SetActive(true);
+                fardig_rapportUI.SetActive(true);
                 facitUI.SetActive(true);
             }
         }
@@ -240,7 +242,7 @@ public class rapport : MonoBehaviour
             row35.SetActive(false);
             row36.SetActive(false);
             row37.SetActive(false);
-            f�rdig_rapportUI.SetActive(false);
+            fardig_rapportUI.SetActive(false);
             rapportUI.SetActive(false);
             facitUI.SetActive(false);
             text.SetActive(false);
@@ -400,7 +402,7 @@ public class rapport : MonoBehaviour
             {
                 row37.SetActive(false);
                 done = true;
-                f�rdig_rapportUI.SetActive(false);
+                fardig_rapportUI.SetActive(false);
                 rapportUI.SetActive(false);
                 facitUI.SetActive(false);
                 //text.SetActive(false);
