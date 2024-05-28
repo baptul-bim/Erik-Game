@@ -7,6 +7,7 @@ public class ErikAudioManager : MonoBehaviour
     [SerializeField]
     private AudioClip[] stepClips = new AudioClip[5];
     private AudioSource audioPlayer;
+    private AudioClip recentClip;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +22,20 @@ public class ErikAudioManager : MonoBehaviour
 
     private AudioClip getRandomStep()
     {
-        int randomIndex = Random.Range(0, 6);
+        int randomIndex = Random.Range(0, stepClips.Length -1);
+        print(randomIndex);
         AudioClip chosenClip = stepClips[randomIndex];
+        if (chosenClip == recentClip)
+        {
+            print("chose new audio");
+            return getRandomStep();
+        }
+        else
+        {
+            recentClip = chosenClip;
+            return chosenClip;
 
-        return chosenClip;
+        }
     }
 
     public void PlayRandomErikStep()

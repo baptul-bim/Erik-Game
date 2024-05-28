@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 20.014841, g: 12.582598, b: 9.762315, a: 1}
+  m_IndirectSpecularColor: {r: 20.015947, g: 12.584993, b: 9.763215, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12656,6 +12656,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 714104709462819437, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
+      propertyPath: MinDistance
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 714104709462819437, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 714104709462819437, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2169015196561775580, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.1
@@ -12704,6 +12716,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Erik
       objectReference: {fileID: 0}
+    - target: {fileID: 8670186309266247618, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
+      propertyPath: stepClips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670186309266247618, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
+      propertyPath: stepClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: d0ac9d2cfc03f1d46abaf9b6bd140c40, type: 3}
+    - target: {fileID: 8670186309266247618, guid: 0ef69eef8e000374ca6b604514c4e4ad, type: 3}
+      propertyPath: stepClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: e3d243bc2e3fde94c848ea987fa550e3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34934,7 +34958,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7022523898540447485, guid: 5e5eb217ff23e974e8b6928af4525ab5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

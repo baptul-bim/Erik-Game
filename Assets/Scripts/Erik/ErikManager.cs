@@ -46,6 +46,10 @@ public class ErikManager : MonoBehaviour
     AIDestinationPicker erikDestPicker;
 
     [SerializeField] private ErikAudioManager ErikAudioMan;
+
+    public Vector3 previousStepPos = Vector3.zero;
+    public Vector3 currentStepPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,7 +84,7 @@ public class ErikManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        erikStep();
         PlayerInSight = erikSeePlayer();
         ErikInSight = playerSeesErik();
         
@@ -393,6 +397,16 @@ public class ErikManager : MonoBehaviour
 
     }
 
+    private void erikStep()
+    {
+        currentStepPos = ErikObj.transform.position;
+
+        if (Vector3.Distance(currentStepPos, previousStepPos) > 0.5f)
+        {
+            ErikAudioMan.PlayRandomErikStep();
+            previousStepPos = currentStepPos;
+        }
+    }
     
 
     
