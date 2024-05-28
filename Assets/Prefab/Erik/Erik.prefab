@@ -281,7 +281,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e7b843547a438e4489ad2e67e25e218d, type: 3}
   - {fileID: 8300000, guid: 15fc54c21c4893143af2b2be36f29322, type: 3}
   - {fileID: 8300000, guid: f2a07a9f660098c4fa2b88da87f4eed5, type: 3}
-  - {fileID: 8300000, guid: e3d243bc2e3fde94c848ea987fa550e3, type: 3}
   - {fileID: 8300000, guid: d0ac9d2cfc03f1d46abaf9b6bd140c40, type: 3}
 --- !u!82 &714104709462819437
 AudioSource:
@@ -292,7 +291,7 @@ AudioSource:
   m_GameObject: {fileID: 8365519885350763513}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 5f99a96287c86cb4abc9c88368c3fd17, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -303,7 +302,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.5
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -339,7 +338,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -369,7 +368,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
