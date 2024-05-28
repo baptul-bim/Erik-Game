@@ -27,8 +27,11 @@ public class PlayerHealthManager : MonoBehaviour
 
         if (stunned)
         {
-            timer = 0;
-            if(timer >= 2)
+            if (timer > 2.5f)
+            {
+                timer = 0;
+            }
+            else if (timer >= 2)
             {
                 stunned = false;
             }
