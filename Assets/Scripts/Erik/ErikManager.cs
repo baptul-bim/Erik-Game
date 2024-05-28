@@ -6,6 +6,9 @@ using System.Linq;
 using Pathfinding.Util;
 public class ErikManager : MonoBehaviour
 {
+    //louie temp bool
+    public bool _hasHit = false;
+
     public GameObject ErikObj;
     [SerializeField] private AIDestinationSetter ErikDestinationSetter;
     [SerializeField] private AIPath ErikAIPath;
@@ -327,9 +330,17 @@ public class ErikManager : MonoBehaviour
         print("erik hit the player");
 
         //Do damage against player here
-        //If player health reaches 0, play final jumpscare
+        if (_hasHit != true)
+        {
+            playerObj.GetComponent<PlayerHealthManager>().TakeDamage();
+            _hasHit = true;
+        }
+        
+
+
 
         relocateErik(erikDestPicker.w_list.RandomItem().transform.position);
+        _hasHit =false;
 
     }
     private void Chase()
