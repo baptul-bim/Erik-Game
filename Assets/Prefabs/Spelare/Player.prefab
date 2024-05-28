@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 182732223982309559}
   - component: {fileID: 144139502154309896}
   - component: {fileID: 6615713276216897994}
-  - component: {fileID: 8526282366561278529}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -111,6 +110,7 @@ MonoBehaviour:
   sprintSpeed: 5
   maxStamina: 3
   staminaRegenSpeed: 0.5
+  staminaText: {fileID: 0}
   speedIncreaseMultiplier: 1.5
   slopeIncreaseMultiplier: 2.5
   groundDrag: 4
@@ -120,10 +120,6 @@ MonoBehaviour:
   readyToJump: 0
   crouchSpeed: 1.5
   crouchYScale: 0.5
-  hiding: 0
-  hideRoof:
-    serializedVersion: 2
-    m_Bits: 0
   jumpKey: 32
   jumpKeyController: 330
   sprintKey: 304
@@ -133,24 +129,11 @@ MonoBehaviour:
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   grounded: 0
   maxSlopeAngle: 40
   orientation: {fileID: 1586602850688664402}
-  moveDirection: {x: 0, y: 0, z: 0}
   state: 0
---- !u!114 &8526282366561278529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078902036990654258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 008608e19cee0e04a974b55dad052851, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6103147119353190578
 GameObject:
   m_ObjectHideFlags: 0

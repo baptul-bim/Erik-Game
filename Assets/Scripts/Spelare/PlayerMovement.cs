@@ -32,10 +32,6 @@ public class PlayerMove : MonoBehaviour
     public float crouchYScale;
     private float startYScale;
 
-    [Header("Hiding")]
-    public bool hiding;
-    public LayerMask hideRoof;
-
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode jumpKeyController = KeyCode.JoystickButton0;
@@ -59,7 +55,7 @@ public class PlayerMove : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
-    public Vector3 moveDirection;
+    Vector3 moveDirection;
 
     Rigidbody rb;
 
@@ -87,8 +83,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //print(rb.velocity.magnitude.ToString("F1")); 
-        if (state == MovementState.sprinting && stamina >= 0)
+        if(state == MovementState.sprinting && stamina >= 0)
         {
             stamina -= Time.deltaTime;
         }
@@ -98,7 +93,6 @@ public class PlayerMove : MonoBehaviour
         }
 
         grounded = Physics.Raycast(transform.position, Vector2.down, playerHeight * 0.5f + 0.2f, whatIsGround);//grounded is true if the raycast looking for whatIsGround layer is hitting ground
-        hiding = Physics.Raycast(transform.position, Vector2.up, playerHeight * 0.5f + 0.2f, hideRoof);//checks if the roof of the hidingspot is above the player, Extend the hitbox of the hidingspot roof slitly to prevent the player from bugging into the roof
 
         if (grounded)//apply drag when grounded
         {
@@ -136,17 +130,15 @@ public class PlayerMove : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);//make the player shorter when crouching
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);//add force down so the player isn't floating
         }
-        if (!hiding)
+
+        if ((Input.GetKeyUp(crouchKey) || Input.GetKeyUp(crouchKeyController)))
         {
-            if ((!Input.GetKey(crouchKey) && !Input.GetKey(crouchKeyController)))
-            {
-                transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);//make the player normal hight when not crouching
-            }
+            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);//make the player normal hight when not crouching
         }
     }
     private void StateHandler()
     {
-        if ((grounded && Input.GetKey(crouchKey)) || hiding)//changes the state to crouching if crouch key is held or if the player is in a hidingspot 
+        if (grounded && Input.GetKey(crouchKey))
         {
             state = MovementState.crouching;
             desiredMoveSpeed = crouchSpeed;
@@ -188,11 +180,10 @@ public class PlayerMove : MonoBehaviour
         while (time < difference)//smoothly lerp movement speed to desired movement speed
         {
             moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
-            print("Checking if on slope:");
+
             if (OnSlope())
             {
                 float slopeAngle = Vector3.Angle(Vector3.up, slopeHit.normal);
-                
                 float slopeAngleIncrease = 1 + (slopeAngle / 90f);
 
                 time += Time.deltaTime * speedIncreaseMultiplier * slopeIncreaseMultiplier * slopeAngleIncrease;
@@ -216,7 +207,7 @@ public class PlayerMove : MonoBehaviour
 
             if (rb.velocity.y > 0)
             {
-                //rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
             }
         }
 
@@ -270,7 +261,7 @@ public class PlayerMove : MonoBehaviour
     }
     public bool OnSlope()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))//makes a raykast to get information of the ground the player is standing on
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))//makes a raykast to get information of the fround the player is standing on
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);//calculates the angle of the object the raycast hits
             return angle < maxSlopeAngle && angle != 0;//return on slope as true if the angle of the ground below the player isn't 0 and is less than the max slope angle
