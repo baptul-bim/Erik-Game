@@ -137,7 +137,7 @@ public class rapport : MonoBehaviour
         row35.SetActive(false);
         row36.SetActive(false);
         row37.SetActive(false);
-        färdig_rapportUI.SetActive(false);
+        f�rdig_rapportUI.SetActive(false);
         rapportUI.SetActive(false);
         facitUI.SetActive(false);
         text.SetActive(false);
@@ -195,7 +195,7 @@ public class rapport : MonoBehaviour
                 row35.SetActive(true);
                 row36.SetActive(true);
                 row37.SetActive(true);
-                färdig_rapportUI.SetActive(true);
+                f�rdig_rapportUI.SetActive(true);
                 facitUI.SetActive(true);
             }
         }
@@ -240,7 +240,7 @@ public class rapport : MonoBehaviour
             row35.SetActive(false);
             row36.SetActive(false);
             row37.SetActive(false);
-            färdig_rapportUI.SetActive(false);
+            f�rdig_rapportUI.SetActive(false);
             rapportUI.SetActive(false);
             facitUI.SetActive(false);
             text.SetActive(false);
@@ -400,7 +400,7 @@ public class rapport : MonoBehaviour
             {
                 row37.SetActive(false);
                 done = true;
-                färdig_rapportUI.SetActive(false);
+                f�rdig_rapportUI.SetActive(false);
                 rapportUI.SetActive(false);
                 facitUI.SetActive(false);
                 //text.SetActive(false);
