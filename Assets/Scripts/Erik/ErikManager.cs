@@ -52,6 +52,8 @@ public class ErikManager : MonoBehaviour
     public Vector3 previousStepPos = Vector3.zero;
     public Vector3 currentStepPos;
 
+    public ErikAnimationManager ErikAniMan;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +61,7 @@ public class ErikManager : MonoBehaviour
         erikEndPath += delegateErikEndPath;
 
         ErikDestinationSetter = ErikObj.GetComponent<AIDestinationSetter>();
+        ErikAniMan = FindObjectOfType<ErikAnimationManager>();
         ErikAIPath = ErikObj.GetComponent<AIPath>();
 
         erikCollider = ErikObj.GetComponentInChildren<Collider>();
@@ -344,7 +347,7 @@ public class ErikManager : MonoBehaviour
         //Do damage against player here
         if (_hasHit != true)
         {
-            playerObj.GetComponent<PlayerHealthManager>().TakeDamage();
+             FindObjectOfType<PlayerHealthManager>().TakeDamage();
             _hasHit = true;
         }
         

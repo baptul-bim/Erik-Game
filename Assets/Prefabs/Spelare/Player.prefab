@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 182732223982309559}
   - component: {fileID: 144139502154309896}
   - component: {fileID: 6615713276216897994}
+  - component: {fileID: 7915589270393148462}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -59,7 +60,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8326570798002922396}
@@ -106,11 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a81fd2ff7591e409c4b3f2c2c683a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 3
-  sprintSpeed: 5
+  walkSpeed: 1
+  sprintSpeed: 2.5
   maxStamina: 3
   staminaRegenSpeed: 0.5
-  staminaText: {fileID: 0}
   speedIncreaseMultiplier: 1.5
   slopeIncreaseMultiplier: 2.5
   groundDrag: 4
@@ -119,21 +119,35 @@ MonoBehaviour:
   airMultiplier: 0.2
   readyToJump: 0
   crouchSpeed: 1.5
-  crouchYScale: 0.5
+  crouchYScale: 0.15
   jumpKey: 32
   jumpKeyController: 330
   sprintKey: 304
   sprintKeyController: 338
   crouchKey: 306
   crouchKeyController: 331
-  playerHeight: 2
+  playerHeight: 0.6
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
   grounded: 0
   maxSlopeAngle: 40
   orientation: {fileID: 1586602850688664402}
   state: 0
+--- !u!114 &7915589270393148462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078902036990654258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008608e19cee0e04a974b55dad052851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHearts: 3
+  heartsLeft: 3
 --- !u!1 &6103147119353190578
 GameObject:
   m_ObjectHideFlags: 0

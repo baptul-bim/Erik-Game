@@ -24,11 +24,12 @@ public class PlayerHealthManager : MonoBehaviour
 
     public void TakeDamage()
     {
+        print("tried to damage");
+
         heartsLeft--;
         if (heartsLeft <= 0)
         {
-            
-            _Erikmanager.GetComponent<ErikAnimationManager>().PlayJumpscare();
+            FindObjectOfType<ErikAnimationManager>().PlayJumpscare();
         }
     }
 
