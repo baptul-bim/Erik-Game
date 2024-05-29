@@ -8,11 +8,13 @@ public class PlayerHealthManager : MonoBehaviour
     public int heartsLeft = 3;
     float timer;
     public bool stunned;
+    GameObject _Erikmanager;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _Erikmanager = GameObject.FindGameObjectWithTag("ErikManager");
     }
     private int prevHearts = 3;
     // Update is called once per frame
@@ -37,4 +39,16 @@ public class PlayerHealthManager : MonoBehaviour
             }
         }
     }
+
+    public void TakeDamage()
+    {
+        heartsLeft--;
+        if (heartsLeft <= 0)
+        {
+            
+            _Erikmanager.GetComponent<ErikAnimationManager>().PlayJumpscare();
+        }
+    }
+
+    
 }

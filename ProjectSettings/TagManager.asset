@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ErikManager
   layers:
   - Default
   - TransparentFX
@@ -11,7 +12,8 @@ TagManager:
   - WhatIsGround
   - Water
   - UI
-  - 
+  - Obstacle
+  - task
   - HideRoof
   - 
   - 
