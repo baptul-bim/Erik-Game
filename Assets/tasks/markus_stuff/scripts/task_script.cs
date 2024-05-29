@@ -1,20 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 //using UnityEngine.UIElements;
 
 public class task_script : MonoBehaviour
 {
+    public display_code DC;
+    public randomCode_script RCS;
+    [SerializeField]
     //stops cleared task from being opened
     public bool done;
     //task UI
     public Image image;
+    private int NuumberFound;
     // Start is called before the first frame update
     void Start()
     {
+        DC = FindObjectOfType<display_code>();
+        RCS = FindObjectOfType<randomCode_script>();
         //redundancy
         done = false;
+        NuumberFound = 0;
     }
 
     // Update is called once per frame
@@ -50,7 +58,9 @@ public class task_script : MonoBehaviour
     //give the reward for clearing the task
     public virtual void taskReward()
     {
+        DC.displayCode[NuumberFound].text = new string("" + RCS.numbers[NuumberFound]);
         print("you get a thingy");
+        NuumberFound += 1;
     }
     //run when task is compleated
     //run when task is compleat
