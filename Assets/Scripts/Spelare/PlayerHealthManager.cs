@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerHealthManager : MonoBehaviour
 {
     public int maxHearts = 3;
+
     public int heartsLeft = 3;
     float timer;
     public bool stunned;
     GameObject _Erikmanager;
-
-
+    
     // Start is called before the first frame update
     void Start()
     {
