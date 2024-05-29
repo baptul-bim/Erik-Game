@@ -13,13 +13,9 @@ public class facit : MonoBehaviour
         rapport = FindObjectOfType<rapport>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void start_task()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            rapport.facit = true;
-            facitObj.SetActive(false);
-        }
+        rapport.facit = true;
+        facitObj.SetActive(false);
     }
 }
