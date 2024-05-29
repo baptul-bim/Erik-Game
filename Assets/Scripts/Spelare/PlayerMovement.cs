@@ -32,6 +32,10 @@ public class PlayerMove : MonoBehaviour
     public float crouchYScale;
     private float startYScale;
 
+    [Header("Stunned")]
+    [SerializeField] PlayerHealthManager stunned;
+    public int stunnedSpeed;
+
     [Header("Hiding")]
     public bool hiding;
     public LayerMask hideRoof;
@@ -87,6 +91,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (stunned.stunned) { desiredMoveSpeed = stunnedSpeed; }
         //print(rb.velocity.magnitude.ToString("F1")); 
         if (state == MovementState.sprinting && stamina >= 0)
         {

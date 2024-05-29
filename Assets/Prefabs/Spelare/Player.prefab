@@ -119,7 +119,13 @@ MonoBehaviour:
   airMultiplier: 0.2
   readyToJump: 0
   crouchSpeed: 1.5
-  crouchYScale: 0.15
+  crouchYScale: 0.5
+  stunned: {fileID: 8526282366561278529}
+  stunnedSpeed: 1
+  hiding: 0
+  hideRoof:
+    serializedVersion: 2
+    m_Bits: 0
   jumpKey: 32
   jumpKeyController: 330
   sprintKey: 304
@@ -149,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHearts: 3
   heartsLeft: 3
+  stunned: 0
 --- !u!1 &6103147119353190578
 GameObject:
   m_ObjectHideFlags: 0
