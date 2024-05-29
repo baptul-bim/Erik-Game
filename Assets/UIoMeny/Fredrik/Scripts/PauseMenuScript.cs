@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+<<<<<<< HEAD
 //using UnityEditor.UI;
+=======
+using UnityEditor.UI;
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;

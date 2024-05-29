@@ -105,6 +105,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1138414623099908455
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +211,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
 --- !u!1 &2007619838130591595
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +401,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &3764871594374283039
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,6 +695,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
 --- !u!1 &5626398456217717508
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +834,7 @@ Transform:
   - {fileID: 6216661241745870795}
   m_Father: {fileID: 2053534035976909077}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+<<<<<<< HEAD
 --- !u!1 &6687794966973731912
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,6 +867,8 @@ Transform:
   - {fileID: 2990593107674425651}
   m_Father: {fileID: 2053534035976909077}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+=======
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
 --- !u!1 &6773722204828246239
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,13 +898,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+<<<<<<< HEAD
   - {fileID: 1506630637922360925}
   - {fileID: 3599257081443825008}
   - {fileID: 6334988318430364813}
+=======
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
   - {fileID: 4525740550952254616}
   - {fileID: 4426718365382322469}
   - {fileID: 4679026840188833359}
   - {fileID: 6788666561180647059}
+<<<<<<< HEAD
   - {fileID: 5448969023918357864}
+=======
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

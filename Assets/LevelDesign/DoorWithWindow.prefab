@@ -105,6 +105,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &465734127138059725
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +211,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
 --- !u!1 &1330538436454675624
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,11 +349,14 @@ Transform:
   m_Children:
   - {fileID: 1573133274379490006}
   - {fileID: 6582952668697562805}
+<<<<<<< HEAD
   - {fileID: 3060741088808738323}
   - {fileID: 4822964960750456070}
   - {fileID: 4853870598229085792}
   - {fileID: 5827228396857567394}
   - {fileID: 4382794080516392469}
+=======
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1567384178554715642
@@ -485,8 +491,13 @@ Transform:
   m_GameObject: {fileID: 2403604142691122995}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -0.18, y: 0, z: 0}
   m_LocalScale: {x: 3.245633, y: 1, z: 1}
+=======
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6313284129527029072}
@@ -519,7 +530,11 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
+<<<<<<< HEAD
   - {fileID: 2100000, guid: 0df58647f77ab5f49a5a7e33c9347ed5, type: 2}
+=======
+  - {fileID: 2100000, guid: 9646c8ceddcba8f42969230c763b18d1, type: 2}
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -541,6 +556,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &2447451985839217349
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,6 +588,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1573133274379490006}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+=======
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
 --- !u!1 &3155736540063968494
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,9 +907,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5769260924214825999}
   serializedVersion: 2
+<<<<<<< HEAD
   m_LocalRotation: {x: 0, y: 0, z: -0, w: -1}
   m_LocalPosition: {x: -0.06991005, y: -0.09412575, z: -0.5649997}
   m_LocalScale: {x: -0.1566403, y: 0.1566403, z: 0.15664029}
+=======
+  m_LocalRotation: {x: -0, y: 0.00000022351739, z: -0, w: -1}
+  m_LocalPosition: {x: -0.06991005, y: -0.09412575, z: -0.5649997}
+  m_LocalScale: {x: 0.15664029, y: 0.15664029, z: 0.15664029}
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9059553321119373732}
@@ -1124,6 +1148,7 @@ Transform:
   - {fileID: 3802628897470728934}
   - {fileID: 5279419624605494668}
   - {fileID: 6313284129527029072}
+<<<<<<< HEAD
   - {fileID: 5954513012045456195}
   m_Father: {fileID: 3913774634336187750}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -1232,6 +1257,10 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+=======
+  m_Father: {fileID: 3913774634336187750}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
 --- !u!1 &6689704565788477418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,7 +1437,11 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
+<<<<<<< HEAD
   - {fileID: 2100000, guid: 0df58647f77ab5f49a5a7e33c9347ed5, type: 2}
+=======
+  - {fileID: 2100000, guid: 9646c8ceddcba8f42969230c763b18d1, type: 2}
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1430,6 +1463,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &7822266888390653962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,3 +1779,5 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")

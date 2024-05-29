@@ -1,5 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< HEAD
 --- !u!1 &659937153625694008
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,6 +189,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
 --- !u!1 &1996941844940384761
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +401,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &5683215272172931582
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,6 +927,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
 --- !u!1 &8958886769983066249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,7 +1113,11 @@ PrefabInstance:
     - target: {fileID: 1371131068473900110, guid: 4d93b86700801d94e933c5d69f678b61, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 2100000, guid: 0df58647f77ab5f49a5a7e33c9347ed5, type: 2}
+=======
+      objectReference: {fileID: 2100000, guid: 9646c8ceddcba8f42969230c763b18d1, type: 2}
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
     - target: {fileID: 3869769597227342856, guid: 4d93b86700801d94e933c5d69f678b61, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -1121,6 +1131,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4d93b86700801d94e933c5d69f678b61, type: 3}
       insertIndex: 0
+<<<<<<< HEAD
       addedObject: {fileID: 1827420639841937869}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4d93b86700801d94e933c5d69f678b61, type: 3}
       insertIndex: 1
@@ -1149,6 +1160,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4d93b86700801d94e933c5d69f678b61, type: 3}
       insertIndex: 11
       addedObject: {fileID: 5149011645619474159}
+=======
+      addedObject: {fileID: 9169258705184655196}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4d93b86700801d94e933c5d69f678b61, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 135463986705517525}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4d93b86700801d94e933c5d69f678b61, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 5199161566831058063}
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d93b86700801d94e933c5d69f678b61, type: 3}
 --- !u!4 &5680524419423348564 stripped
