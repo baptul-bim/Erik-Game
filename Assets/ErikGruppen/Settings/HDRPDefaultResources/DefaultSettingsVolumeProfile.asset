@@ -64,11 +64,7 @@ MonoBehaviour:
     m_Value: 1
   m_SampleCount:
     m_OverrideState: 1
-<<<<<<< HEAD
     m_Value: 4
-=======
-    m_Value: 8
->>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
 --- !u!114 &-6978165186189661611
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -245,7 +241,6 @@ MonoBehaviour:
   cullingDistance:
     m_OverrideState: 0
     m_Value: 1000
-<<<<<<< HEAD
 --- !u!114 &-2178158054936555436
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -280,8 +275,6 @@ MonoBehaviour:
   highlightsEnd:
     m_OverrideState: 0
     m_Value: 1
-=======
->>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
 --- !u!114 &-2049544540041615172
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -533,13 +526,10 @@ MonoBehaviour:
   - {fileID: -2049544540041615172}
   - {fileID: -788746823045303410}
   - {fileID: -6978165186189661611}
-<<<<<<< HEAD
   - {fileID: 7628549387952723736}
   - {fileID: -2178158054936555436}
   - {fileID: 3290390285332763085}
   - {fileID: 5102274636174817026}
-=======
->>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
 --- !u!114 &448115243408767295
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -567,17 +557,10 @@ MonoBehaviour:
     m_Value: 1
   upperHemisphereLuxValue:
     m_OverrideState: 1
-<<<<<<< HEAD
     m_Value: 32.710896
   upperHemisphereLuxColor:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.4469612, z: 0.48601052}
-=======
-    m_Value: 32.71092
-  upperHemisphereLuxColor:
-    m_OverrideState: 1
-    m_Value: {x: 0.5, y: 0.4469614, z: 0.4860103}
->>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
   desiredLuxValue:
     m_OverrideState: 0
     m_Value: 20000
@@ -961,11 +944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384c4d03a551c44448145f4093304119, type: 3}
   m_Name: ScreenSpaceReflection
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   active: 0
-=======
-  active: 1
->>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
   quality:
     m_OverrideState: 1
     m_Value: 3
