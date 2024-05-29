@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PlayerHealthManager : MonoBehaviour
+using TMPro;
+public class display_code : MonoBehaviour
 {
-    public int maxHearts = 3;
-    public int heartsLeft = 3;
-
+    public TextMeshProUGUI[] displayCode;
     // Start is called before the first frame update
     void Start()
     {
-        
+        displayCode[0].text = "";
+        displayCode[1].text = "";
+        displayCode[2].text = "";
     }
 
     // Update is called once per frame
@@ -18,6 +18,4 @@ public class PlayerHealthManager : MonoBehaviour
     {
         
     }
-
-    
 }
