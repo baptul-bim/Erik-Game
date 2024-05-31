@@ -23,11 +23,9 @@ public class ErikAudioManager : MonoBehaviour
     private AudioClip getRandomStep()
     {
         int randomIndex = Random.Range(0, stepClips.Length -1);
-        print(randomIndex);
         AudioClip chosenClip = stepClips[randomIndex];
         if (chosenClip == recentClip)
         {
-            print("chose new audio");
             return getRandomStep();
         }
         else
