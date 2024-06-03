@@ -43,11 +43,28 @@ public class PlayerHealthManager : MonoBehaviour
     public void TakeDamage()
     {
         heartsLeft--;
+
+        if (heartsLeft == 2)
+        {
+
+            FindObjectOfType<Health>().GetComponent<SpriteRenderer>().sprite = FindObjectOfType<Health>().twoHealth;
+        }
+
+        if (FindObjectOfType<PlayerHealthManager>().heartsLeft == 1)
+        {
+            FindObjectOfType<Health>().GetComponent<SpriteRenderer>().sprite = FindObjectOfType<Health>().oneHealth;
+        }
+
+
         if (heartsLeft <= 0)
         {
             
             _Erikmanager.GetComponent<ErikAnimationManager>().PlayJumpscare();
+
+
         }
+
+
     }
 
     

@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour
     public float walkSpeed;
     public float sprintSpeed;
 
-    float stamina;
+    public float stamina;
     [SerializeField] float maxStamina;
     [SerializeField] float staminaRegenSpeed;
 
