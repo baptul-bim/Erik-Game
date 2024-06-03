@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    [Header("Audio")]
+    public AudioSource anfåddClip;
+
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
@@ -91,6 +94,11 @@ public class PlayerMove : MonoBehaviour
         if (state == MovementState.sprinting && stamina >= 0)
         {
             stamina -= Time.deltaTime;
+
+            if (!anfåddClip.isPlaying)
+            {
+                anfåddClip.Play();
+            }
         }
         else if (state != MovementState.sprinting && stamina <= maxStamina)
         {

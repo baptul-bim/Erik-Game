@@ -137,11 +137,11 @@ public class rapport : MonoBehaviour
         row35.SetActive(false);
         row36.SetActive(false);
         row37.SetActive(false);
-        f�rdig_rapportUI.SetActive(false);
+        färdig_rapportUI.SetActive(false);
         rapportUI.SetActive(false);
         facitUI.SetActive(false);
-        text.SetActive(false);
-        tip.SetActive(false);
+        //text.SetActive(false);
+        //tip.SetActive(false);
     }
 
     // Update is called once per frame
@@ -152,8 +152,8 @@ public class rapport : MonoBehaviour
             if (facit == false)
             {
                 rapportUI.SetActive(true);
-                text.SetActive(true);
-                tip.SetActive(true);
+                //text.SetActive(true);
+                //tip.SetActive(true);
             }
             if (facit == true) 
             {
@@ -195,7 +195,7 @@ public class rapport : MonoBehaviour
                 row35.SetActive(true);
                 row36.SetActive(true);
                 row37.SetActive(true);
-                f�rdig_rapportUI.SetActive(true);
+                färdig_rapportUI.SetActive(true);
                 facitUI.SetActive(true);
             }
         }
@@ -240,11 +240,11 @@ public class rapport : MonoBehaviour
             row35.SetActive(false);
             row36.SetActive(false);
             row37.SetActive(false);
-            f�rdig_rapportUI.SetActive(false);
+            färdig_rapportUI.SetActive(false);
             rapportUI.SetActive(false);
             facitUI.SetActive(false);
-            text.SetActive(false);
-            tip.SetActive(false);
+            //text.SetActive(false);
+            //tip.SetActive(false);
         }
         if (tasking == true)
         {
@@ -400,7 +400,7 @@ public class rapport : MonoBehaviour
             {
                 row37.SetActive(false);
                 done = true;
-                f�rdig_rapportUI.SetActive(false);
+                färdig_rapportUI.SetActive(false);
                 rapportUI.SetActive(false);
                 facitUI.SetActive(false);
                 //text.SetActive(false);
