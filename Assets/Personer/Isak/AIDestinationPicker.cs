@@ -26,7 +26,8 @@ public class AIDestinationPicker : MonoBehaviour
         gameObject.GetComponent<ErikManager>().SetErikTarget(w_list.RandomItem());
     }
 
-    void UpdateTarget() { gameObject.GetComponent<ErikManager>().SetErikTarget(w_list.RandomItem()); }
+    void UpdateTarget() { gameObject.GetComponent<ErikManager>().SetErikTarget(w_list.RandomItem());
+    }
     void UpdateWeights()
     {
         w_list.Sort((a, b) => Vector3.Distance(a.Item.transform.position, player.transform.position).

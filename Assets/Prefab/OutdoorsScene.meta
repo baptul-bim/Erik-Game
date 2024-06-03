@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: dd67cfb0a21dab24fab5c6b56ddf5040
+=======
 guid: 177fcbe38688b574c90e567ee682ad5c
+>>>>>>> parent of 68a9d72 (Revert "Merge remote-tracking branch 'upstream/main' into ErikGrupp")
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
