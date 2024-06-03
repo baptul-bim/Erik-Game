@@ -46,13 +46,22 @@ public class ErikManager : MonoBehaviour
     public static event ChooseNewTargetPosition erikEndPath;
 
     AIDestinationPicker erikDestPicker;
+
+    [SerializeField] private ErikAudioManager ErikAudioMan;
+
+    public Vector3 previousStepPos = Vector3.zero;
+    public Vector3 currentStepPos;
+
+    public ErikAnimationManager ErikAniMan;
+
     // Start is called before the first frame update
     void Start()
     {
-        erikSeeCallback = delegateErikSeesPlayer;
-        erikEndPath = delegateErikEndPath;
+        erikSeeCallback += delegateErikSeesPlayer;
+        erikEndPath += delegateErikEndPath;
 
         ErikDestinationSetter = ErikObj.GetComponent<AIDestinationSetter>();
+        ErikAniMan = FindObjectOfType<ErikAnimationManager>();
         ErikAIPath = ErikObj.GetComponent<AIPath>();
 
         erikCollider = ErikObj.GetComponentInChildren<Collider>();
@@ -72,13 +81,15 @@ public class ErikManager : MonoBehaviour
             ErikLocalTargetObj.name = "LocalErikTarget";
         }
 
+        ErikAudioMan = ErikObj.GetComponentInChildren<ErikAudioManager>();
+
         erikDestPicker = gameObject.GetComponent<AIDestinationPicker>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        erikStep();
         PlayerInSight = erikSeePlayer();
         ErikInSight = playerSeesErik();
         
@@ -249,12 +260,16 @@ public class ErikManager : MonoBehaviour
     public void SetErikTarget(GameObject TargetPointObj)
     {
         print("trying to set target to " + TargetPointObj);
-        if (ErikDestinationSetter.target != ErikLocalTargetObj.transform && ErikCurrentState != "Chase")
+        if (ErikDestinationSetter != null && ErikDestinationSetter.target != ErikLocalTargetObj.transform && ErikCurrentState != "Chase")
         {
             ErikDestinationSetter.target = ErikLocalTargetObj.transform;
         }
+
         ErikLocalTargetObj.transform.position = TargetPointObj.transform.position;
-        
+
+        print("set target to " + TargetPointObj);
+
+
     }
 
     private void delegateErikEndPath()
@@ -263,7 +278,7 @@ public class ErikManager : MonoBehaviour
         {
             erikhitPlayer();
         }
-
+        
         print("erik reached end of path");
 
     }
@@ -332,7 +347,7 @@ public class ErikManager : MonoBehaviour
         //Do damage against player here
         if (_hasHit != true)
         {
-            playerObj.GetComponent<PlayerHealthManager>().TakeDamage();
+             FindObjectOfType<PlayerHealthManager>().TakeDamage();
             _hasHit = true;
         }
         
@@ -394,6 +409,18 @@ public class ErikManager : MonoBehaviour
         }
 
     }
+
+    private void erikStep()
+    {
+        currentStepPos = ErikObj.transform.position;
+
+        if (Vector3.Distance(currentStepPos, previousStepPos) > 0.5f)
+        {
+            ErikAudioMan.PlayRandomErikStep();
+            previousStepPos = currentStepPos;
+        }
+    }
+    
 
     
 }
