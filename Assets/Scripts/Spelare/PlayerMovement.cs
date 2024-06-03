@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     float stamina;
     [SerializeField] float maxStamina;
     [SerializeField] float staminaRegenSpeed;
+    public bool outOfBreath;
 
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
@@ -95,13 +96,15 @@ public class PlayerMove : MonoBehaviour
         //print(rb.velocity.magnitude.ToString("F1")); 
         if (state == MovementState.sprinting && stamina >= 0)
         {
+            outOfBreath = false;
             stamina -= Time.deltaTime;
         }
         else if (state != MovementState.sprinting && stamina <= maxStamina)
         {
+            outOfBreath = true;
             stamina += staminaRegenSpeed * Time.deltaTime;
         }
-
+        else { outOfBreath = false; }
         grounded = Physics.Raycast(transform.position, Vector2.down, playerHeight * 0.5f + 0.2f, whatIsGround);//grounded is true if the raycast looking for whatIsGround layer is hitting ground
         hiding = Physics.Raycast(transform.position, Vector2.up, playerHeight * 0.5f + 0.2f, hideRoof);//checks if the roof of the hidingspot is above the player, Extend the hitbox of the hidingspot roof slitly to prevent the player from bugging into the roof
 
