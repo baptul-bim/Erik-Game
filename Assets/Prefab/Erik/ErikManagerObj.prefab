@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5154420176998108501}
   m_Layer: 0
   m_Name: ErikManagerObj
-  m_TagString: Untagged
+  m_TagString: ErikManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f114b1912da18aa4383646ff14c10dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hasHit: 0
   ErikObj: {fileID: 0}
   ErikDestinationSetter: {fileID: 0}
   ErikAIPath: {fileID: 0}
@@ -56,6 +57,9 @@ MonoBehaviour:
   AngerValue: 0
   ErikLocalTargetObj: {fileID: 0}
   ErikVisabilityProcent: 0
+  ErikAudioMan: {fileID: 0}
+  previousStepPos: {x: 0, y: 0, z: 0}
+  currentStepPos: {x: 0, y: 0, z: 0}
 --- !u!114 &5154420176998108501
 MonoBehaviour:
   m_ObjectHideFlags: 0
