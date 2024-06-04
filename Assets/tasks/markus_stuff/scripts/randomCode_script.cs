@@ -8,18 +8,23 @@ public class randomCode_script : MonoBehaviour
     public int number1;
     public int number2;
     public int number3;
-
+    public int[] numbers = new int[3];
     // Start is called before the first frame update
     void Start()
     {
-        
+        generateCode();
     }
     public void generateCode()
     {
         System.Random rng = new System.Random();
-        number1 = rng.Next(0, 10);
-        number2 = rng.Next(0, 10);
-        number3 = rng.Next(0, 10);
+        
+        for(int i = 0; i < numbers.Length; i++)
+        {
+            numbers[i] = rng.Next(0, 10);
+        }
+        number1 = numbers[0];
+        number2 = numbers[1];
+        number3 = numbers[2];
         code =""+number1 + number2 + number3;
 
     }

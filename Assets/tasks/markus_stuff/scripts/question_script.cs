@@ -291,7 +291,7 @@ public class question_script : MonoBehaviour
             {
                 
                 //tells the english task to compleat
-                SendMessageUpwards("Englishtask_cleared",SendMessageOptions.RequireReceiver);
+                SendMessageUpwards("Englishtask_cleared", SendMessageOptions.RequireReceiver);
             }
             //if any answers are wrong
             else
