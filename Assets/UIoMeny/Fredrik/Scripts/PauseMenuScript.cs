@@ -8,24 +8,21 @@ using UnityEngine.UI;
 
 public class PauseMenuScript : MonoBehaviour
 {
+    //all of the GameObjects that the pause menu consists of
     public GameObject pauseMenu;
     public GameObject mainPauseMenu;
     public GameObject optionsMenu;
     public GameObject optionsMainMenu;
     public GameObject sensitivityMenu;
     public GameObject audioMenu;
+    public GameObject graphicsMenu;
     public GameObject aYSMainMenuScreen;
     public GameObject aYSQuitScreen;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+        //enables or disables the menu, or goes one step back if you are in a specific part of the pause menu. Executed very poorly
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(pauseMenu.activeSelf == false)
@@ -52,6 +49,11 @@ public class PauseMenuScript : MonoBehaviour
                         audioMenu.SetActive(false);
                         optionsMainMenu.SetActive(true);
                     }
+                    else if (graphicsMenu.activeSelf == true)
+                    {
+                        graphicsMenu.SetActive(false);
+                        optionsMainMenu.SetActive(true);
+                    }
                     else
                     {
                         optionsMenu.SetActive(false);
@@ -76,11 +78,13 @@ public class PauseMenuScript : MonoBehaviour
         }
     }
 
+    //Switches the scene to the main menu
     public void BackToMenu()
     {
         SceneManager.LoadScene(0);
     }
 
+    //Closes the application
     public void QuitGame()
     {
             Application.Quit();

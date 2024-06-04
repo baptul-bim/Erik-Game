@@ -16,8 +16,6 @@ public class SensOptions : MonoBehaviour
     Toggle XAxis;
     [SerializeField]
     TextMeshProUGUI SliderValue;
-    [SerializeField]
-    TextMeshProUGUI text_;
 
     bool InvertY;
     bool InvertX;
@@ -34,7 +32,7 @@ public class SensOptions : MonoBehaviour
     {
        
 
-        sens = SensSlider.value * 1000;
+        sens = SensSlider.value * 100;
 
         if (YAxis.isOn)
         {
